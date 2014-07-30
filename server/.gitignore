@@ -1,0 +1,9 @@
+# Ignore everything
+*
+!*/
+# Except for..
+!.gitignore
+!run-server.sh
+!server.properties
+!plugins/scriptcraft/players/*
+!plugins/scriptcraft.jar
