@@ -1,4 +1,4 @@
 exports.hi = function( player ){
-    player.sendMessage('Greetingsk ' + player.name);
+    player.sendMessage('Greetings ' + player.name);
 };
 
