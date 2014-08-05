@@ -43,12 +43,13 @@ Instructions below are from a Mac OSX / Linux terminal. Not seeing anything stop
 # Vagrant: http://www.vagrantup.com/downloads-archive.html
 # VirtualBox 4.2.24 and Vagrant 1.6.3 work together
 
-# Run commands to bootstrap the vm
-# You'll need git for this
+# Install git from: http://git-scm.com/downloads
 #
+# Grab this project
 # git clone https://github.com/greghuc/coderdojo-scriptcraft-server.git
 # cd coderdojo-scriptcraft-server
 #
+# Run commands to bootstrap the vm
 # vagrant up
 # When prompted, specify a 'bridged network interface': Wi-Fi or Ethernet
 # Go with the option that the CoderDojo class uses to access the local network.
@@ -57,7 +58,7 @@ Instructions below are from a Mac OSX / Linux terminal. Not seeing anything stop
 
 # Run commands to start the Scriptcraft server
 # Start by logging into the vm
-# vagrant vm
+# vagrant ssh
 # cd /vagrant/server
 # And run the Scriptcraft server!
 # ./run-server.sh
@@ -98,12 +99,13 @@ Before class, there's a few things to sort/check:
 # ops $username
 
 # Check you can connect your Minecraft client to the server
-# First, open a new terminal and grab the server ip address
+#
+# First, open a new terminal and grab the server ip address (i.e of the vm)
 # vagrant ssh
 # ifconfig
 # and look for something like: inet addr:192.168.0.57, in the eth0 or eht1 sections
 # Then load up the Minecraft client on your laptop
-# Create a user profile, setting the Minecraft to match that of server (can find version in server log). Currently 1.6.4
+# Create a user profile, setting the Minecraft version to match that of server (can find version in server log). Currently 1.6.4
 # Hit 'Play', 'Multiplayer' then 'Direct Connect' 
 # Enter the server ip address (192.168.0.57 in our example case) and 'Join server'
 # Hopefully you've connected to the server :-)
