@@ -16,6 +16,8 @@ echo "PS1='$PROJECT:\W\$ '" >> /home/vagrant/.bash_profile
 mkdir -p ${PLAYERS_DIR}
 chmod -R a+rwx ${PLAYERS_DIR}
 
+# Make sure vagrant user exists, with no password
+sudo smbpasswd -a vagrant -n
 
 # Setup samba share of players directory
 # Thanks: http://goinggnu.wordpress.com/2010/06/29/public-writable-share-in-samba/
@@ -34,7 +36,8 @@ cat > /etc/samba/smb.conf <<EOL
    obey pam restrictions = yes
    unix password sync = yes
    passwd program = /usr/bin/passwd %u
-   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\\
+n *password\supdated\ssuccessfully* .
    pam password change = yes
    map to guest = bad user
    guest account = nobody
@@ -42,31 +45,21 @@ cat > /etc/samba/smb.conf <<EOL
    printing = cups
    printcap name = cups
    usershare allow guests = yes
-
-[print$]
-   comment = Printer Drivers
-   path = /var/lib/samba/printers
-   browseable = yes
-   read only = yes
-   guest ok = yes
-
-[printers]
-   comment = Printer in Linux
-   path = /var/spool/samba
-   guest ok = Yes
-   printable = Yes
-   use client driver = Yes
-   browseable = No
+   null passwords = yes
 
 [players]
+comment = Players dir
 path = ${PLAYERS_DIR}
+guest ok = yes
+writeable = yes
 browsable = yes
-writable = yes
-read only = no
-guest only = yes
-create mask = 0644
-directory mask = 0755
+force create mode = 0755
+force directory mode = 0755
+create mask = 0755
+force user = vagrant
+force group = vagrant
 EOL
+
 restart smbd
 
 echo ""
