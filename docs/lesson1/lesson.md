@@ -95,7 +95,7 @@ Right, let's get on with learning how to build cool stuff in Minecraft.
 
 You already did Lesson 1 - running your first Javascript program inside Minecraft.
 
-### Lesson 2 - building abox
+### Lesson 2 - building a box
 
 When you did the KhanAcademy Javascript course, you got to create 2d shapes like circles and squares. We're going to do something similar in Minecraft - except we'll be creating 3d shapes instead, like boxes and cylinders.
 
