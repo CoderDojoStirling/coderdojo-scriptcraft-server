@@ -29,7 +29,7 @@ We've essentially got this functioning, but there's room for improvement. It's n
 ## Lessons
 
 First (ever!) lesson on 16 August 2014:
-* [Lesson](https://github.com/greghuc/coderdojo-scriptcraft-server/blob/write-kids-script/docs/lesson1/lesson.md) [(as pdf)](https://github.com/greghuc/coderdojo-scriptcraft-server/blob/write-kids-script/docs/lesson1/lesson1.pdf?raw=true) and [Code](https://github.com/greghuc/coderdojo-scriptcraft-server/blob/write-kids-script/docs/lesson1/lessons.js)
+* [Lesson](https://github.com/greghuc/coderdojo-scriptcraft-server/blob/master/docs/lesson1/lesson.md) [(as pdf)](https://github.com/greghuc/coderdojo-scriptcraft-server/blob/master/docs/lesson1/lesson1.pdf?raw=true) and [Code](https://github.com/greghuc/coderdojo-scriptcraft-server/blob/master/docs/lesson1/lessons.js)
 
 ## Setting up and running the ScriptCraft/Minecraft server
 
