@@ -26,6 +26,11 @@ They'll then:
 
 We've essentially got this functioning, but there's room for improvement. It's not 1-click yet!
 
+## Lessons
+
+First (ever!) lesson on 16 August 2014:
+* [Lesson]() and [Code]()
+
 ## Setting up and running the ScriptCraft/Minecraft server
 
 The Scriptcraft/Minecraft server is packaged up as a virtual machine. So you'll need to:
