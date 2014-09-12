@@ -54,7 +54,7 @@ If your computer is a Mac:
 * if asked for a username, select 'guest' (should be no password)
 
 If your computer is running Windows:
-* open Windows explorer, and type into the address bar the directory address specified by a CoderDojo mentor. It should be something like '\\192.168.0.18\players'
+* open Windows explorer, and type into the address bar the directory address specified by a CoderDojo mentor. It should be something like '\\\\192.168.0.18\players'
 * if asked for a username, select 'guest' (should be no password)
 
 Now look for a sub-directory with your Minecraft username.
@@ -78,7 +78,7 @@ Now switch back to Minecraft.
 * Open the prompt again by typing /
 * Now type... 
 ```
-js your-username.lesson();
+js your-username.lesson1();
 # BUT USE YOUR REAL USERNAME!
 # I'm greghuc, so I'd type: js greghuc.lesson1();
 ```
@@ -128,10 +128,9 @@ You should have created an iron box just in front of you. Cool!
 You'll learn later about different shapes you can create. For now, let's learn about some new materials:
 * blocks.snow
 * blocks.glass
-* blocks.lava
 
 Your challenge is...
-Change the lesson2 function you just typed in to create a box out of lava.
+Change the lesson2 function you just typed in to create a box out of glass.
 And run it!
 
 ### Lesson 3 - setting sizes of a shape
@@ -160,7 +159,7 @@ Now take a look at how this matches up with the drone.box function: we're tellin
 ### Lesson 3 - challenge
 
 Your challenge is...
-Change the lesson3 function to create a blocks.tnt box with depth 2, width 4, and height 3. And run it!
+Change the lesson3 function to create a blocks.wood box with depth 2, width 4, and height 3. And run it!
 
 ### Lesson 4 - using function arguments
 The last lesson let you create a box with certain dimensions. But it's a hassle to change the dimensions: you have to go back into lessons.js, change the width, height and depth sizes, save lessons.js, go back into Minecraft, and run your function from the prompt...
@@ -262,17 +261,17 @@ exports.lesson6part1 = function() {
 	var drone = new Drone(); 
 	drone.up(1);
 	drone.fwd(1);
-	drone.box( blocks.tnt, 3, 1, 2 );
+	drone.box( blocks.wood, 3, 1, 2 );
 	drone.up(1);
 	drone.fwd(1);
-	drone.box( blocks.tnt, 3, 1, 2 );
+	drone.box( blocks.wood, 3, 1, 2 );
 	drone.up(1);
 	drone.fwd(1);
-	drone.box( blocks.tnt, 3, 1, 2 );	
+	drone.box( blocks.wood, 3, 1, 2 );	
 }
 ```
 
-Cool - a staircase of TNT! But imagine we wanted a staircase with 50 steps. That would takes ages to type. But there's a better way - using a loop.
+Cool - a wooden staircase! But imagine we wanted a staircase with 50 steps. That would takes ages to type. But there's a better way - using a loop.
 
 Type this in, but don't run it yet.
 ```
@@ -283,7 +282,7 @@ exports.lesson6part2 = function(numberOfSteps) {
 	while (counter <= numberOfSteps) {
 	    drone.up(1);
 	    drone.fwd(1);
-	    drone.box( blocks.tnt, 3, 1, 2 );
+	    drone.box( blocks.wood, 3, 1, 2 );
 	    
 	    counter = counter + 1;
 	}
@@ -365,9 +364,7 @@ blocks.gold
 blocks.chest
 blocks.ice
 blocks.pumpkin
-blocks.tnt
 blocks.water
-blocks.lava
 ```
 
 ```

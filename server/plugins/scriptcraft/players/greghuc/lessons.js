@@ -11,7 +11,7 @@ exports.lesson2 = function() {
 //Challenge 2: create box out of lava
 exports.challenge2 = function() {
 	var drone = new Drone(); 
-	drone.box( blocks.lava );
+	drone.box( blocks.glass );
 };
 
 //Lesson 3: create box with dimensions
@@ -19,10 +19,10 @@ exports.lesson3 = function() {
 	var drone = new Drone(); 
 	drone.box( blocks.snow, 3, 2, 1 );
 };
-//Challenge 3: create tnt box with depth 2, width 4, height 3, 
+//Challenge 3: create wood box with depth 2, width 4, height 3, 
 exports.challenge3 = function() {
 	var drone = new Drone(); 
-	drone.box( blocks.tnt, 4, 3, 2 );
+	drone.box( blocks.wood, 4, 3, 2 );
 };
 
 //Lesson 4: create cylinder with parameter dimensions
@@ -61,13 +61,13 @@ exports.lesson6part1 = function() {
 	var drone = new Drone(); 
 	drone.up(1);
 	drone.fwd(1);
-	drone.box( blocks.tnt, 3, 1, 2 );
+	drone.box( blocks.wood, 3, 1, 2 );
 	drone.up(1);
 	drone.fwd(1);
-	drone.box( blocks.tnt, 3, 1, 2 );
+	drone.box( blocks.wood, 3, 1, 2 );
 	drone.up(1);
 	drone.fwd(1);
-	drone.box( blocks.tnt, 3, 1, 2 );	
+	drone.box( blocks.wood, 3, 1, 2 );	
 }
 //Lesson 6: create a shape multiple times, with a loop
 exports.lesson6part2 = function(numberOfSteps) {
@@ -76,7 +76,7 @@ exports.lesson6part2 = function(numberOfSteps) {
 	while (counter <= numberOfSteps) {
 	    drone.up(1);
 	    drone.fwd(1);
-	    drone.box( blocks.tnt, 3, 1, 2 );
+	    drone.box( blocks.wood, 3, 1, 2 );
 	    
 	    counter = counter + 1;
 	}	
