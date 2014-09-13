@@ -1,5 +1,5 @@
-//Lesson 1: create first Javascript program in Minecraft
-exports.lesson1 = function() {
+//Check Scriptcraft works
+exports.doesitwork = function() {
     echo('This is my first Minecraft program :-)');
 };
 

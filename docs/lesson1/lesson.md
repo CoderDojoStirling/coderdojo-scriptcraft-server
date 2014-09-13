@@ -20,7 +20,7 @@ You'll need three things:
  
 Here's how things will work:
 * You'll run Minecraft and connect to a Minecraft server we're running. It's special because it lets you create stuff using Javascript.
-* You'll write small Javascript programs in a text-file called 'lessons.js'. This file will be saved to a special directory that lives on the Minecraft server too. This means the server can see your programs, and let you run them inside Minecraft.
+* You'll write small Javascript programs in a text-file called 'lessons.js'. The file lives in a special directory on the Minecraft server too. This means the server can see your programs, and let you run them inside Minecraft.
 
 ### Connecting to the Minecraft server
 
@@ -58,29 +58,24 @@ If your computer is running Windows:
 * if asked for a username, select 'guest' (should be no password)
 
 Now look for a sub-directory with your Minecraft username.
-* Click on it. This is the directory where your 'lessons.js' text-file will go.
+* Click on it.
+* You should see a 'lessons.js' file
+* Right-click on the file and open it with your text-editor (TextWrangler or Notepad++)
 
-Let's set up lessons.js..
-* Open your text-editor (TextWrangler on Mac, or Notepad++ on Windows)
-* Start a new document.
-* Type in the following Javascript program (exactly as it looks)
+You should see some Javascript that looks like
 ```
-exports.lesson1 = function() {
-	echo('This is my first Minecraft program :-)');
+exports.doesitwork = function() {
+    echo('This is my first Minecraft program :-)');
 };
 ```
-* Now save the document as 'lessons.js' somewhere you can find it (like the desktop)
-* Close the text-editor.
-* Now drag the 'lessons.js' file to the special directory we opened earlier: the one with your Minecraft username.
-* Now open this file with your text-editor (just double-click on it)
 
 Now switch back to Minecraft.
 * Open the prompt again by typing /
-* Now type... 
+* And type... 
 ```
-js your-username.lesson1();
+js your-username.doesitwork();
 # BUT USE YOUR REAL USERNAME!
-# I'm greghuc, so I'd type: js greghuc.lesson1();
+# I'm greghuc, so I'd type: js greghuc.doesitwork();
 ```
 * Hit return
 * If Minecraft said 'This is my first Minecraft program :-)', then it's all good.
@@ -104,7 +99,6 @@ Before we start, you'll be using something called 'Drone'. A Drone is like a spe
 Let's start by creating a small box.
 In your lessons.js file, add this Javascript code to the bottom (exactly as it looks):
 ```
-//Lesson 2: create box
 exports.lesson2 = function() {
 	var drone = new Drone(); 
 	drone.box( blocks.iron );
@@ -144,7 +138,6 @@ js your-username.lesson3();
 AND REMEMBER TO POINT THE CROSSHAIRS AT THE HORIZON (NOT THE GROUND).
 
 ```
-//Lesson 3 - create box with dimensions
 exports.lesson3 = function() {
 	var drone = new Drone();
 	drone.box( blocks.snow, 3, 2, 1 );
@@ -169,7 +162,6 @@ But there's a better way.
 Add this to the bottom of lessons.js and save it. BUT DON'T RUN IT YET!
 
 ```
-//Lesson 4: create cylinder with parameter dimensions
 exports.lesson4 = function(radius, height) {
 	var drone = new Drone(); 
 	drone.cylinder0( blocks.stone, radius, height );
@@ -216,7 +208,6 @@ Let's think about this for a minute. If you point at the ground, the drone start
 
 Type this in:
 ```
-//Lesson 5: specifying where to build something
 exports.lesson5part1 = function() {
 	var drone = new Drone(); 
 	drone.box( blocks.iron );
@@ -233,7 +224,6 @@ NO IT'S NOT! You can move the drone around. So we can move the drone up before i
 
 Type this in and run it (pointing crosshairs at a ground tile):
 ```
-//Lesson 5: specifying where to build something
 exports.lesson5part2 = function() {
 	var drone = new Drone(); 
 	drone.up(2);
@@ -256,7 +246,6 @@ Creating a shape just once is boring. Imagine the cool stuff we could do if we c
 
 Type this in and run it (pointing crosshairs at a ground tile):
 ```
-//Lesson 6: create a shape multiple times
 exports.lesson6part1 = function() {
 	var drone = new Drone(); 
 	drone.up(1);
@@ -275,7 +264,6 @@ Cool - a wooden staircase! But imagine we wanted a staircase with 50 steps. That
 
 Type this in, but don't run it yet.
 ```
-//Lesson 6: create a shape multiple times, with a loop
 exports.lesson6part2 = function(numberOfSteps) {
 	var drone = new Drone(); 
 	var counter = 1;
@@ -315,7 +303,6 @@ Let's put together what we've learnt and draw a skyscraper.
 Type this in, and run it. You know the drill.
 
 ```
-//Lesson 7: skyscraper
 exports.lesson7 = function(levels){
 	var drone = new Drone();
 	drone.up();
