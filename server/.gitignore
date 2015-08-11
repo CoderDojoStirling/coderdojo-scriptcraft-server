@@ -1,0 +1,9 @@
+# Ignore everything
+*
+!*/
+# Except for..
+!.gitignore
+!config/worlds/default/default_NORMAL.cfg
+!run-server.sh
+!scriptcraft/players/*
+!plugins/scriptcraft.jar
