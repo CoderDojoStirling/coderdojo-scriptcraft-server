@@ -1,0 +1,15 @@
+[11:26:09] [CanaryMod] [INFO]: Starting: CanaryMod 1.8.0-1.2.1-SNAPSHOT
+[11:26:09] [CanaryMod] [INFO]: Canary Path: /vagrant/lib/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar & Working From: /vagrant/server
+[11:26:09] [CanaryMod] [INFO]: Could not find the server configuration at config/server.cfg, creating default.
+[11:26:09] [CanaryMod] [INFO]: Could not find the database configuration at config/db.cfg, creating default.
+[11:26:10] [CanaryMod] [INFO]: Registered xml Database
+[11:26:10] [CanaryMod] [INFO]: Could not find config/ops.cfg. Creating one for you...
+[11:26:10] [CanaryMod] [INFO]: You can now add ops to config/ops.cfg (one per line!). We left you a note.
+[11:26:10] [CanaryMod] [INFO]: Found 1 plugins; total: 1
+[11:26:12] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting minecraft server version 1.8
+[11:26:12] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Loading properties
+[11:26:12] [net.minecraft.server.ServerEula] [WARN]: Failed to load eula.txt
+[11:26:12] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
+[11:26:12] [net.minecraft.server.MinecraftServer] [INFO]: Stopping server
+[11:26:12] [net.minecraft.server.MinecraftServer] [INFO]: Saving worlds
+[11:26:12] [CanaryMod] [INFO]: Disabling Plugins ...
