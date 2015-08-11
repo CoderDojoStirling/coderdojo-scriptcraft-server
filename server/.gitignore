@@ -3,7 +3,7 @@
 !*/
 # Except for..
 !.gitignore
+!config/worlds/default/default_NORMAL.cfg
+!config/server.cfg
 !run-server.sh
-!server.properties
-!plugins/scriptcraft/players/*
 !plugins/scriptcraft.jar

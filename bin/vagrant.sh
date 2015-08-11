@@ -3,7 +3,7 @@
 # Used as shell prompt
 PROJECT=vagrant-coderdojo
 # Shared players directory
-PLAYERS_DIR=/vagrant/server/plugins/scriptcraft/players
+PLAYERS_DIR=/vagrant/server/scriptcraft/players
 
 apt-get update -y
 apt-get install -y openjdk-7-jdk

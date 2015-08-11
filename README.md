@@ -91,55 +91,56 @@ Before continuing, let's cover some admin:
 
 Before class, there's a few things to sort/check:
 
-* Give yourself ops superpowers on the Scriptcraft server
+* Enable the Scriptcraft classroom plugin on the Minecraft server
 * Check you can connect your Minecraft client to the server
-* Check you can run Javascript on the server
-* Enable the Scriptcraft classroom plugin
+* Check you can run Javascript from your Minecraft client
 * Check you can copy a Minecraft mod into the server-shared directory, and that it runs.
 
 ```
 # NOTE: we will refer to your Minecraft username as $username
-# 
-# Give yourself ops on the (running) Minecraft server
-# ops $username
-
-# Check you can connect your Minecraft client to the server
+#
+# = Enable the Scriptcraft classroom plugin on the Minecraft server =
+#
+# More info at: https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#classroom-plugin
+# From the minecraft server console, run..
+# jsp classroom on
+#
+# = Check you can connect your Minecraft client to the server =
 #
 # First, open a new terminal and grab the server ip address (i.e of the vm)
 # vagrant ssh
 # ifconfig
-# and look for something like: inet addr:192.168.0.57, in the eth0 or eht1 sections
+# and look for something like: inet addr:192.168.0.57, in the eth0 or eth1 sections
 # Then load up the Minecraft client on your laptop
-# Create a user profile, setting the Minecraft version to match that of server (can find version in server log). Currently 1.6.4
+# Create a user profile, setting the Minecraft version to match that of server (can find version in server log). Currently 1.8.8
 # Hit 'Play', 'Multiplayer' then 'Direct Connect' 
 # Enter the server ip address (192.168.0.57 in our example case) and 'Join server'
 # Hopefully you've connected to the server :-)
 
-# Check you can run Javascript on the server
-# From the minecraft client, load the console with '/' and run..
+# = Check you can run Javascript from your Minecraft client = 
+#
+# So you've connected to the server with your Minecraft client.
+# From the client, load the console with '/' and run..
 # js 1 + 1
 # If the answer is 2.0, you're running Javascript with Scriptcraft
 
-# Enable the Scriptcraft classroom plugin
-# More info at: https://github.com/walterhiggins/ScriptCraft/blob/master/src/main/js/plugins/classroom/classroom.js
-# From the minecraft client console, run..
-# js classroom.allowScripting(true)
-
 # Check you can copy a Minecraft mod into the server-shared directory, and that it runs.
-# The following vm directory is network-shared: /vagrant/server/plugins/scriptcraft/players/
+# The following vm directory is network-shared: /vagrant/server/scriptcraft/players
 # It should be accessible from mentors and kids' laptops as:
 # //$server-ip-address/players (//192.168.0.57/players in our example case)
 # or smb://$server-ip-address/players (depends on OS)
 # Try connecting to this directory
 # 
 # Let's try copying a Minecraft mod into this directory
-# First (from inside the vm), create a subdirectory in /vagrant/server/plugins/scriptcraft/players named after your Minecraft username
-# So in our example, we'd create: /vagrant/server/plugins/scriptcraft/players/greghuc
+# First (from inside the vm), ensure there's a subdirectory in /vagrant/server/scriptcraft/players named after your Minecraft username
+# So in our example: /vagrant/server/scriptcraft/players/greghuc
+# This directory will exist already if you connected your Minecraft client after switching classsroom mode on. Otherwise, create the directory.
 # Now (on your laptop), create greet.js, with the contents:
 #
 exports.hi = function( player ){
-    player.sendMessage('Greetings ' + player.name);
+  echo( player, 'Hi ' + player.name);
 };
+
 #
 # Using the network-share, copy greet.js to ...players/$username (players/greghuc in our example)
 #
@@ -157,8 +158,7 @@ They'll follow a shorter version of what we just covered:
     * They'll need the server IP address
 * Write the javascript plugin on their laptop, then copy it into the server using the network share
     * They'll need to know how to access/user the network share
-    * Make sure the server players directory contains subdirectories named after the kids' Minecraft usernames
-    * Each kid copies their js code into player/$kid-username
+    * Each kid copies their js code into player/$kid-username via the network share
     * They can then run their js functions from inside the Minecraft client as $kid-username.functionname()
 
 Good luck!
