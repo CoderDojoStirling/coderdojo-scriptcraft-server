@@ -133,7 +133,7 @@ Before class, there's a few things to sort/check:
 # 
 # Let's try copying a Minecraft mod into this directory
 # First (from inside the vm), ensure there's a subdirectory in /vagrant/server/scriptcraft/players named after your Minecraft username
-# So in our example: /vagrant/server/plugins/scriptcraft/players/greghuc
+# So in our example: /vagrant/server/scriptcraft/players/greghuc
 # This directory will exist already if you connected your Minecraft client after switching classsroom mode on. Otherwise, create the directory.
 # Now (on your laptop), create greet.js, with the contents:
 #
