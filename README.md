@@ -91,18 +91,19 @@ Before continuing, let's cover some admin:
 
 Before class, there's a few things to sort/check:
 
-* Give yourself ops superpowers on the Scriptcraft server
-* Check you can connect your Minecraft client to the server
+* Enable the classroom plugin on the server
 * Check you can run Javascript on the server
-* Enable the Scriptcraft classroom plugin
+* Check you can connect your Minecraft client to the server
 * Check you can copy a Minecraft mod into the server-shared directory, and that it runs.
 
 ```
 # NOTE: we will refer to your Minecraft username as $username
-# 
-# Give yourself ops on the (running) Minecraft server
-# op $username
-
+#
+# Enable the Scriptcraft classroom plugin
+# More info at: https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#classroom-plugin
+# From the minecraft server console, run..
+# jsp classroom on
+#
 # Check you can connect your Minecraft client to the server
 #
 # First, open a new terminal and grab the server ip address (i.e of the vm)
@@ -110,7 +111,7 @@ Before class, there's a few things to sort/check:
 # ifconfig
 # and look for something like: inet addr:192.168.0.57, in the eth0 or eth1 sections
 # Then load up the Minecraft client on your laptop
-# Create a user profile, setting the Minecraft version to match that of server (can find version in server log). Currently 1.6.4
+# Create a user profile, setting the Minecraft version to match that of server (can find version in server log). Currently 1.8.8
 # Hit 'Play', 'Multiplayer' then 'Direct Connect' 
 # Enter the server ip address (192.168.0.57 in our example case) and 'Join server'
 # Hopefully you've connected to the server :-)
@@ -119,11 +120,6 @@ Before class, there's a few things to sort/check:
 # From the minecraft client, load the console with '/' and run..
 # js 1 + 1
 # If the answer is 2.0, you're running Javascript with Scriptcraft
-
-# Enable the Scriptcraft classroom plugin
-# More info at: https://github.com/walterhiggins/ScriptCraft/blob/master/src/main/js/plugins/classroom/classroom.js
-# From the minecraft client console, run..
-# js classroom.allowScripting(true)
 
 # Check you can copy a Minecraft mod into the server-shared directory, and that it runs.
 # The following vm directory is network-shared: /vagrant/server/plugins/scriptcraft/players/
