@@ -91,20 +91,21 @@ Before continuing, let's cover some admin:
 
 Before class, there's a few things to sort/check:
 
-* Enable the classroom plugin on the server
-* Check you can run Javascript on the server
+* Enable the Scriptcraft classroom plugin on the Minecraft server
 * Check you can connect your Minecraft client to the server
+* Check you can run Javascript from your Minecraft client
 * Check you can copy a Minecraft mod into the server-shared directory, and that it runs.
 
 ```
 # NOTE: we will refer to your Minecraft username as $username
 #
-# Enable the Scriptcraft classroom plugin
+# = Enable the Scriptcraft classroom plugin on the Minecraft server =
+#
 # More info at: https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#classroom-plugin
 # From the minecraft server console, run..
 # jsp classroom on
 #
-# Check you can connect your Minecraft client to the server
+# = Check you can connect your Minecraft client to the server =
 #
 # First, open a new terminal and grab the server ip address (i.e of the vm)
 # vagrant ssh
@@ -116,8 +117,10 @@ Before class, there's a few things to sort/check:
 # Enter the server ip address (192.168.0.57 in our example case) and 'Join server'
 # Hopefully you've connected to the server :-)
 
-# Check you can run Javascript on the server
-# From the minecraft client, load the console with '/' and run..
+# = Check you can run Javascript from your Minecraft client = 
+#
+# So you've connected to the server with your Minecraft client.
+# From the client, load the console with '/' and run..
 # js 1 + 1
 # If the answer is 2.0, you're running Javascript with Scriptcraft
 
@@ -129,9 +132,9 @@ Before class, there's a few things to sort/check:
 # Try connecting to this directory
 # 
 # Let's try copying a Minecraft mod into this directory
-# First (from inside the vm), create a subdirectory in /vagrant/server/scriptcraft/players named after your Minecraft username
-# So in our example, we'd create: /vagrant/server/plugins/scriptcraft/players/greghuc
-# Note this directory will exist already if you connected your Minecraft client after switching classsroom mode on. 
+# First (from inside the vm), ensure there's a subdirectory in /vagrant/server/scriptcraft/players named after your Minecraft username
+# So in our example: /vagrant/server/plugins/scriptcraft/players/greghuc
+# This directory will exist already if you connected your Minecraft client after switching classsroom mode on. Otherwise, create the directory.
 # Now (on your laptop), create greet.js, with the contents:
 #
 exports.hi = function( player ){
