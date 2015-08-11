@@ -122,20 +122,22 @@ Before class, there's a few things to sort/check:
 # If the answer is 2.0, you're running Javascript with Scriptcraft
 
 # Check you can copy a Minecraft mod into the server-shared directory, and that it runs.
-# The following vm directory is network-shared: /vagrant/server/plugins/scriptcraft/players/
+# The following vm directory is network-shared: /vagrant/server/scriptcraft/players
 # It should be accessible from mentors and kids' laptops as:
 # //$server-ip-address/players (//192.168.0.57/players in our example case)
 # or smb://$server-ip-address/players (depends on OS)
 # Try connecting to this directory
 # 
 # Let's try copying a Minecraft mod into this directory
-# First (from inside the vm), create a subdirectory in /vagrant/server/plugins/scriptcraft/players named after your Minecraft username
+# First (from inside the vm), create a subdirectory in /vagrant/server/scriptcraft/players named after your Minecraft username
 # So in our example, we'd create: /vagrant/server/plugins/scriptcraft/players/greghuc
+# Note this directory will exist already if you connected your Minecraft client after switching classsroom mode on. 
 # Now (on your laptop), create greet.js, with the contents:
 #
 exports.hi = function( player ){
-    player.sendMessage('Greetings ' + player.name);
+  echo( player, 'Hi ' + player.name);
 };
+
 #
 # Using the network-share, copy greet.js to ...players/$username (players/greghuc in our example)
 #
@@ -153,8 +155,7 @@ They'll follow a shorter version of what we just covered:
     * They'll need the server IP address
 * Write the javascript plugin on their laptop, then copy it into the server using the network share
     * They'll need to know how to access/user the network share
-    * Make sure the server players directory contains subdirectories named after the kids' Minecraft usernames
-    * Each kid copies their js code into player/$kid-username
+    * Each kid copies their js code into player/$kid-username via the network share
     * They can then run their js functions from inside the Minecraft client as $kid-username.functionname()
 
 Good luck!
