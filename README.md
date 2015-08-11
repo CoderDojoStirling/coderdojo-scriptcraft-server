@@ -101,14 +101,14 @@ Before class, there's a few things to sort/check:
 # NOTE: we will refer to your Minecraft username as $username
 # 
 # Give yourself ops on the (running) Minecraft server
-# ops $username
+# op $username
 
 # Check you can connect your Minecraft client to the server
 #
 # First, open a new terminal and grab the server ip address (i.e of the vm)
 # vagrant ssh
 # ifconfig
-# and look for something like: inet addr:192.168.0.57, in the eth0 or eht1 sections
+# and look for something like: inet addr:192.168.0.57, in the eth0 or eth1 sections
 # Then load up the Minecraft client on your laptop
 # Create a user profile, setting the Minecraft version to match that of server (can find version in server log). Currently 1.6.4
 # Hit 'Play', 'Multiplayer' then 'Direct Connect' 
