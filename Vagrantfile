@@ -12,8 +12,9 @@ Vagrant.configure('2') do |config|
 
   end
 
-  # Make minecraft server port available on hosting machine
-  # config.vm.network :forwarded_port, host: 25565, guest: 25565
+  # Make minecraft server port available on hosting machine, as localhost
+  config.vm.network :forwarded_port, host: 25565, guest: 25565
+  # Make minecraft server port available on remote machines, through real ip address
   config.vm.network 'public_network'
   config.vm.provision :shell, :path => 'bin/vagrant.sh'
 
