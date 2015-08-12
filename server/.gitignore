@@ -6,4 +6,5 @@
 !config/worlds/default/default_NORMAL.cfg
 !config/server.cfg
 !run-server.sh
+!scriptcraft/players
 !plugins/scriptcraft.jar
