@@ -49,7 +49,8 @@ var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDo
 
     var sectionWindowWidth = sectionWidth - 2;
     var sectionWindowHeight = sectionHeight - 2;
-
+    var glassBlockId = 102; //http://www.minecraftinfo.com/glasspane.htm
+    
     drone.chkpt(start);   
     
     drone.box0(blockId, sectionsAcross * sectionWidth, sectionHeight, depth);
@@ -167,6 +168,12 @@ exports.wallsign = function(message) {
     drone.wallsign(splitStringIntoLines(message, 15));
 };
 
+exports.air = function(width, height, depth) {
+    var drone = newDrone().up();
+    var airBlockId = 0; //http://www.minecraftinfo.com/air.htm
+    
+    drone.box(airBlockId, width, height, depth);
+};
 
 //Helper functions below this point
 
