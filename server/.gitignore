@@ -6,5 +6,5 @@
 !config/worlds/default/default_NORMAL.cfg
 !config/server.cfg
 !run-server.sh
-!scriptcraft/players/greghuc/*
+!scriptcraft/players/stirling/*
 !plugins/scriptcraft.jar
