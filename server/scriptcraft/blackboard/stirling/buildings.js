@@ -1,3 +1,29 @@
+/*
+ Creative Stirling / CoderDojo plan to run a demo at OpenDoors 2015.
+ The idea is that people will be able to 'build an old Stirling street' - by coding it in Minecraft.
+ By 'coding', people will be able to call a set of pre-existing Javascript functions, which create
+ buildings, streets, signs, etc. Some variation in construction will be possible, e.g. the number of
+ building storeys can be specified.
+
+ This file contains the project Javascript code.
+ Each Javascript function is callable from inside the Minecraft client (if setup with Scriptcraft).
+ So to call the house function, you run from the Minecraft prompt 'js stirling.house()'
+ All function calls need to prefixed with 'stirling.'
+
+ We'd like to add more construction functions (more house types?).
+ Read the code below to get a feel for how we're creating things in the Minecraft.
+ We're basically using an awesome project called Scriptcraft, which lets people code in Minecraft using
+ Javascript: https://github.com/walterhiggins/ScriptCraft
+
+ Scriptcraft has lots of docs to help you get started: https://github.com/walterhiggins/ScriptCraft#further-reading
+ But to shortcut a lot of reading, we're using its Drone functionality:
+ https://github.com/walterhiggins/ScriptCraft/blob/master/docs/API-Reference.md#drone-plugin
+
+ Final tip. Use the list of Minecraft block types (and ids) at: http://www.minecraftinfo.com/idlist.htm
+ We need to specify block types when building (e.g. 'stone' house)
+ */
+
+
 //type 'sandstone', 'brick' or 'stone'
 //numberOfFloors: number > 0
 //sectionsAcross: number > 0
