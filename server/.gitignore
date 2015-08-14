@@ -7,4 +7,4 @@
 !config/server.cfg
 !run-server.sh
 !scriptcraft/players/stirling/*
-!plugins/scriptcraft.jar
+!plugins/*
