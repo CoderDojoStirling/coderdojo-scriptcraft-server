@@ -31,8 +31,8 @@
 //if type, numberOfFloors, sectionsAcross or sectionWidth are left undefined, will use default values
 exports.house = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
     var blockId = getValueForString(type, { 'sandstone': '24:1', 'brick': 45, 'stone': '98:2' }, 'stone');
-    numberOfFloors = getNumber(numberOfFloors, 3);
-    sectionsAcross = getNumber(sectionsAcross, 3);
+    numberOfFloors = getNumber(numberOfFloors, 4);
+    sectionsAcross = getNumber(sectionsAcross, 2);
     sectionWidth = getNumber(sectionWidth, 4);
     sectionWidth = sectionWidth < 4 ? 4 : sectionWidth; //Ensure sectionWidth is minimum of 4
 
@@ -87,11 +87,20 @@ var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDo
         drawDoor = hasDoor && (i == middleSection);
 
         if (drawDoor) {
+            //Front door
             drone.move(start)
                  .right((i - 1) * sectionWidth)
                  .up(1)
                  .right(1)
                  .door();
+
+            //Backdoor
+            drone.move(start)
+                .right((i - 1) * sectionWidth)
+                .up(1)
+                .right(1)
+                .fwd(depth - 1)
+                .door();
         } else {
             drone.move(start)
                  .right((i - 1) * sectionWidth)
@@ -157,8 +166,8 @@ exports.light = function(height) {
 //length: number > 0
 //if width or length are left undefined, will use default values
 exports.garden = function(width, length) {
-    width = getNumber(width, 9);
-    length = getNumber(length, 5);
+    width = getNumber(width, 8);
+    length = getNumber(length, 10);
 
     var drone = newDrone();
     drone.garden(width,length);
