@@ -1,0 +1,37 @@
+<permission_Roshar_NORMAL>
+  <tableProperties>
+    <id auto-increment="true" data-type="INTEGER" column-type="PRIMARY" is-list="false" not-null="false" />
+    <owner auto-increment="false" data-type="STRING" column-type="NORMAL" is-list="false" not-null="false" />
+    <path auto-increment="false" data-type="STRING" column-type="NORMAL" is-list="false" not-null="false" />
+    <type auto-increment="false" data-type="STRING" column-type="NORMAL" is-list="false" not-null="false" />
+    <value auto-increment="false" data-type="BOOLEAN" column-type="NORMAL" is-list="false" not-null="false" />
+  </tableProperties>
+  <entry>
+    <id>1</id>
+    <owner>7adfda8e-7c82-4ee1-88e2-6d407ff93a21</owner>
+    <path>scriptcraft.evaluate</path>
+    <type>player</type>
+    <value>true</value>
+  </entry>
+  <entry>
+    <id>2</id>
+    <owner>86ff3a9f-958a-4c06-80e0-8e0b1468976e</owner>
+    <path>scriptcraft.evaluate</path>
+    <type>player</type>
+    <value>true</value>
+  </entry>
+  <entry>
+    <id>3</id>
+    <owner>b8e2bb98-f74f-3373-a144-0107bca542b7</owner>
+    <path>scriptcraft.evaluate</path>
+    <type>player</type>
+    <value>true</value>
+  </entry>
+  <entry>
+    <id>4</id>
+    <owner>08d6ef60-f157-3a8e-a04f-6af73400697c</owner>
+    <path>scriptcraft.evaluate</path>
+    <type>player</type>
+    <value>true</value>
+  </entry>
+</permission_Roshar_NORMAL>
