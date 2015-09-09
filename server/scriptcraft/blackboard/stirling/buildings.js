@@ -87,11 +87,20 @@ var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDo
         drawDoor = hasDoor && (i == middleSection);
 
         if (drawDoor) {
+            //Front door
             drone.move(start)
                  .right((i - 1) * sectionWidth)
                  .up(1)
                  .right(1)
                  .door();
+
+            //Backdoor
+            drone.move(start)
+                .right((i - 1) * sectionWidth)
+                .up(1)
+                .right(1)
+                .fwd(depth - 1)
+                .door();
         } else {
             drone.move(start)
                  .right((i - 1) * sectionWidth)
