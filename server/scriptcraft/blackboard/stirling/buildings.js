@@ -31,8 +31,8 @@
 //if type, numberOfFloors, sectionsAcross or sectionWidth are left undefined, will use default values
 exports.house = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
     var blockId = getValueForString(type, { 'sandstone': '24:1', 'brick': 45, 'stone': '98:2' }, 'stone');
-    numberOfFloors = getNumber(numberOfFloors, 3);
-    sectionsAcross = getNumber(sectionsAcross, 3);
+    numberOfFloors = getNumber(numberOfFloors, 4);
+    sectionsAcross = getNumber(sectionsAcross, 2);
     sectionWidth = getNumber(sectionWidth, 4);
     sectionWidth = sectionWidth < 4 ? 4 : sectionWidth; //Ensure sectionWidth is minimum of 4
 
