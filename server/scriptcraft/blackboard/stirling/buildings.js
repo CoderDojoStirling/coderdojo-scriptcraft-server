@@ -166,8 +166,8 @@ exports.light = function(height) {
 //length: number > 0
 //if width or length are left undefined, will use default values
 exports.garden = function(width, length) {
-    width = getNumber(width, 9);
-    length = getNumber(length, 5);
+    width = getNumber(width, 8);
+    length = getNumber(length, 10);
 
     var drone = newDrone();
     drone.garden(width,length);
