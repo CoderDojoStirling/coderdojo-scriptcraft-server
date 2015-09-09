@@ -1,0 +1,32 @@
+[19:52:26] [CanaryMod] [INFO]: Starting: CanaryMod 1.8.0-1.2.1-SNAPSHOT
+[19:52:26] [CanaryMod] [INFO]: Canary Path: /vagrant/lib/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar & Working From: /vagrant/server
+[19:52:26] [CanaryMod] [INFO]: Registered xml Database
+[19:52:26] [CanaryMod] [INFO]: Found 1 plugins; total: 1
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting minecraft server version 1.8
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Loading properties
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Generating keypair
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting Minecraft server on *:25565
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: The server will make no attempt to authenticate usernames. Beware.
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[19:52:28] [CanaryMod] [INFO]: Enabling early Plugins...
+[19:52:29] [CanaryMod] [INFO]: Enabling late Plugins...
+[19:52:29] [CanaryMod] [INFO]: Enabling plugin ScriptCraft
+[19:52:30] [ScriptCraft] [WARN]: alias plugin is not yet supported in CanaryMod
+[19:52:31] [ScriptCraft] [INFO]: Blackboard turned on for all players on server 192.168.0.8
+[19:52:31] [ScriptCraft] [WARN]: commando-test not yet supported in CanaryMod
+[19:52:31] [ScriptCraft] [WARN]: commando plugin is not yet supported in CanaryMod
+[19:52:32] [ScriptCraft] [WARN]: cow-clicker minigame is not yet supported in CanaryMod and Craftbukkit
+[19:52:32] [net.minecraft.server.MinecraftServer] [INFO]: Preparing start region for level Roshar_NORMAL (0)
+[19:52:33] [net.minecraft.server.MinecraftServer] [INFO]: Preparing spawn area: 22%
+[19:52:33] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Done (4.954s)! For help, type "help" or "?"
+[19:52:33] [ScriptCraft] [INFO]: js-patch setTimeout() test complete
+[19:52:36] [CanaryMod] [INFO] [MESSAGE]: 2.0
+[19:53:04] [CanaryMod] [INFO] [NOTICE]: Console issued a manual shutdown
+[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Stopping server
+[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Saving players
+[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Saving worlds
+[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Saving chunks for level 'Roshar'/Overworld
+[19:53:04] [CanaryMod] [INFO]: Disabling Plugins ...
+[19:53:04] [CanaryMod] [INFO]: Disabling plugin ScriptCraft
