@@ -31,7 +31,7 @@
 //if type, numberOfFloors, sectionsAcross or sectionWidth are left undefined, will use default values
 exports.house = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
     var blockId = getValueForString(type, { 'sandstone': '24:1', 'brick': 45, 'stone': '98:2' }, 'stone');
-    numberOfFloors = getNumber(numberOfFloors, 4);
+    numberOfFloors = getNumber(numberOfFloors, 7);
     sectionsAcross = getNumber(sectionsAcross, 2);
     sectionWidth = getNumber(sectionWidth, 4);
     sectionWidth = sectionWidth < 4 ? 4 : sectionWidth; //Ensure sectionWidth is minimum of 4
@@ -152,13 +152,13 @@ exports.light = function(height) {
     var lamppostBlockId = 42; //http://www.minecraftinfo.com/blockofiron.htm
     var lightBlockId = 89; //http://www.minecraftinfo.com/beacon.htm
 
-    height = getNumber(height, 9);
+    height = getNumber(height, 7);
 
     var drone = newDrone();
 
     //Use height + 1, as assume cursor is pointing at ground tile
     drone.box(lamppostBlockId, 1, height + 1, 1)
-         .up(height + 1)
+         .up(height)
          .box(lightBlockId, 1, 1, 1);
 };
 
@@ -184,7 +184,7 @@ exports.tree = function(type) {
 
 //mesage: string
 //if message is undefined, will use default value
-exports.signpost = function(message) {
+exports.sign = function(message) {
     var drone = newDrone();
 
     message = getString(message, 'I am a sign');
