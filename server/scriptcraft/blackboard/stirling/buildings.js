@@ -59,7 +59,10 @@ exports.housewithshop = function(widthInWindows, heightInFloors, material, dorme
         return;
     }
 
-    var shopColors = [ '159:1', '159:2', '159:3','159:4','159:5','159:6', '159:10', '159:12'];
+    var shopColors = [ '159:1', '159:2', '159:3',
+                       '159:4', '159:5', '159:6',
+                       '159:7', '159:8', '159:9',
+                       '159:10', '159:11', '159:12'];
     var blockIds = getValueForString(material, {
         'stone': {
             ground: randomValueFromArray(shopColors),
