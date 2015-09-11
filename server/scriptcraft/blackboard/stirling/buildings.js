@@ -24,26 +24,30 @@
  */
 
 exports.house = function(widthInWindows, heightInFloors, material, dormers) {
-    var doorType = 'single';
+    widthInWindows = getNumber(widthInWindows, 3);
+    heightInFloors = getNumber(heightInFloors, 3);
     var blockIds = getValueForString(material, {
         'stone': {
-            ground: 45,
-            upper: 45
+            ground: 1,
+            upper: 1
         },
         'sandstone': {
             ground: 24,
             upper: 24
         },
         'brick': {
-            ground: '98:2',
-            upper: '98:2'
+            ground: 98,
+            upper: 98
         }
     }, 'stone');
-    configedHouse(widthInWindows, heightInFloors, material, dormers, doorType, blockIds);
+    var doorType = 'single';
+    var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
+    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
 };
 
 exports.houseWithShop = function(widthInWindows, heightInFloors, material, dormers) {
-    var doorType = 'double';
+    widthInWindows = getNumber(widthInWindows, 3);
+    heightInFloors = getNumber(heightInFloors, 3);
     var blockIds = getValueForString(material, {
         'stone': {
             ground: '159:5',
@@ -58,16 +62,12 @@ exports.houseWithShop = function(widthInWindows, heightInFloors, material, dorme
             upper: 98
         }
     }, 'stone');
-    configedHouse(widthInWindows, heightInFloors, material, dormers, doorType, blockIds);
+    var doorType = 'double';
+    var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
+    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
 };
 
-var configedHouse = function(widthInWindows, heightInFloors, material, dormers, doorType, blockIds) {
-    //TODO: Enforce values being supplied
-    //TODO: Cap possible values
-    //TODO: Randomise material if not supplied
-    widthInWindows = getNumber(widthInWindows, 3);
-    heightInFloors = getNumber(heightInFloors, 3);
-
+var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, hasDormers) {
     var roofBlockId = 67;
     var dormerHeight = 2;
 
@@ -94,16 +94,20 @@ var configedHouse = function(widthInWindows, heightInFloors, material, dormers, 
 
     var roofStart = 'roofStart';
     drone.chkpt(roofStart);
-    var dormerOffset = ((2 * windowSectionWidth) - windowSectionWidth)/2;
 
-    var doubleSections = Math.floor(widthInWindows / 2);
-    var doubleSectionStart;
-    for (i = 1; i <= doubleSections; i++) {
-        drone.move(roofStart);
-        doubleSectionStart = (i - 1) * (windowSectionWidth * 2);
-        drone.right(doubleSectionStart);
-        drone.right(dormerOffset);
-        dormer(drone, blockId, roofBlockId, windowSectionWidth, dormerHeight, depth);
+    //Dormers
+    if (hasDormers) {
+        var dormerOffset = ((2 * windowSectionWidth) - windowSectionWidth)/2;
+
+        var doubleSections = Math.floor(widthInWindows / 2);
+        var doubleSectionStart;
+        for (i = 1; i <= doubleSections; i++) {
+            drone.move(roofStart);
+            doubleSectionStart = (i - 1) * (windowSectionWidth * 2);
+            drone.right(doubleSectionStart);
+            drone.right(dormerOffset);
+            dormer(drone, blockId, roofBlockId, windowSectionWidth, dormerHeight, depth);
+        }
     }
 
     //Chimneys
