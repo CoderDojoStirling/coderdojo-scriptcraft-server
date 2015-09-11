@@ -24,10 +24,10 @@
  */
 
 exports.house = function(widthInWindows, heightInFloors, material, dormers) {
-    widthInWindows = getNumber(widthInWindows, null);
-    heightInFloors = getNumber(heightInFloors, null);
+    widthInWindows = capNumber(getNumber(widthInWindows, null), 9);
+    heightInFloors = capNumber(getNumber(heightInFloors, null), 5);
     if ((widthInWindows === null) || (heightInFloors === null)) {
-        echo(self, 'Please give the width and height of house, as numbers');
+        echo(self, 'Please give the width and height of house (in windows), as numbers');
         return;
     }
 
@@ -51,10 +51,10 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers) {
 };
 
 exports.housewithshop = function(widthInWindows, heightInFloors, material, dormers) {
-    widthInWindows = getNumber(widthInWindows, null);
-    heightInFloors = getNumber(heightInFloors, null);
+    widthInWindows = capNumber(getNumber(widthInWindows, null), 9);
+    heightInFloors = capNumber(getNumber(heightInFloors, null), 5);
     if ((widthInWindows === null) || (heightInFloors === null)) {
-        echo(self, 'Please give the width and height of house, as numbers');
+        echo(self, 'Please give the width and height of house (in windows), as numbers');
         return;
     }
 
@@ -193,9 +193,9 @@ exports.lamppost = function(height) {
     var lamppostBlockId = 42; //http://www.minecraftinfo.com/blockofiron.htm
     var lightBlockId = 89; //http://www.minecraftinfo.com/beacon.htm
 
-    height = getNumber(height, null);
+    height = capNumber(getNumber(height, null), 10);
     if (height === null) {
-        echo(self, 'Please give the height of light, as number');
+        echo(self, 'Please give the height of lamppost, as number');
         return;
     }
 
@@ -211,8 +211,8 @@ exports.lamppost = function(height) {
 //length: number > 0
 //if width or length are left undefined, will use default values
 exports.garden = function(width, length) {
-    width = getNumber(width, null);
-    length = getNumber(length, null);
+    width = capNumber(getNumber(width, null), 20);
+    length = capNumber(getNumber(length, null), 20);
     if ((width === null) || (length === null)) {
         echo(self, 'Please give the width and length of garden, as numbers');
         return;
@@ -363,6 +363,11 @@ var getNumber = function(input, fallbackValue) {
     }
 
     return value;
+};
+
+var capNumber = function(input, maxValue) {
+    if (typeof input != 'number') { return input; }
+    return input <= maxValue ? input : maxValue;
 };
 
 var splitStringIntoLines = function(value, maxLineLength) {
