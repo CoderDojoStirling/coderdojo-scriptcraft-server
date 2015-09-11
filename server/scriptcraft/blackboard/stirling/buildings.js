@@ -44,7 +44,7 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers) {
             ground: 98,
             upper: 98
         }
-    }, 'stone');
+    });
     var doorType = 'single';
     var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
     innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
@@ -71,7 +71,7 @@ exports.housewithshop = function(widthInWindows, heightInFloors, material, dorme
             ground: '159:12',
             upper: 98
         }
-    }, 'stone');
+    });
     var doorType = 'double';
     var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
     innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
@@ -318,12 +318,13 @@ var newDrone = function() {
     return new Drone(self);
 }
 
-var getValueForString = function (input, valueForString, fallbackValue) {
+var getValueForString = function (input, valueForString) {
     var value = input;
 
     if ((value == undefined) ||
         (typeof value != 'string')) {
-        value = fallbackValue;
+
+        value = randomKeyFromObject(valueForString);
     }
 
     return valueForString[value];
@@ -382,4 +383,13 @@ var splitStringIntoLines = function(value, maxLineLength) {
 
         return lines;
     }, []);
+};
+
+var randomKeyFromObject = function(obj) {
+    var keys = Object.keys(obj);
+    return keys[randomIntFromInterval(0, keys.length - 1)];
+};
+
+var randomIntFromInterval = function (min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
 };
