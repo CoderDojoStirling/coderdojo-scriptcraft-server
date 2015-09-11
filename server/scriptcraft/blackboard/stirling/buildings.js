@@ -23,26 +23,6 @@
  We need to specify block types when building (e.g. 'stone' house)
  */
 
-var dormer = function(drone, bodyBlockId, roofBlockId, width, height, depth) {
-    var numberOfTurns = 3;
-    var windowBlockId = 102;
-    var windowDepth = 1;
-
-    var windowOffset = 1;
-    var windowWidth = width - (2 * windowOffset);
-    var windowHeight = height;
-
-    var dormerStart = 'dormerStart';
-    drone.chkpt(dormerStart);
-    drone.box0(bodyBlockId, width, height, depth);
-    drone.up(height).right(width - 1).turn(numberOfTurns).prism(roofBlockId, depth, width);
-    drone.move(dormerStart).right(windowOffset).box( windowBlockId, windowWidth, windowHeight, windowDepth );
-    drone.move(dormerStart).fwd(depth - windowDepth).right(windowOffset).box( windowBlockId, windowWidth, windowHeight, windowDepth );
-}
-
-//var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDoor) {
-
-
 exports.house = function(widthInWindows, heightInFloors, material, dormers, chimneys) {
     //TODO: Enforce values being supplied
     //TODO: Cap possible values
@@ -64,9 +44,9 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers, chim
     //Floors
     var i;
     for (i = 1; i <= heightInFloors; i++) {
-        //TODO: Sort shop logic
         var hasDoor = i == 1;
-        drone = storey(drone, blockId, widthInWindows, windowSectionWidth, depth, hasDoor);
+        var doorType = hasDoor ? 'double' : null;
+        drone = storey(drone, blockId, widthInWindows, windowSectionWidth, depth, doorType);
     }
 
     //Roof
@@ -100,6 +80,63 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers, chim
         .right(roofWidth - chimneyDepth)
         .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth);
 };
+
+var dormer = function(drone, bodyBlockId, roofBlockId, width, height, depth) {
+    var numberOfTurns = 3;
+    var windowBlockId = 102;
+    var windowDepth = 1;
+
+    var windowOffset = 1;
+    var windowWidth = width - (2 * windowOffset);
+    var windowHeight = height;
+
+    var dormerStart = 'dormerStart';
+    drone.chkpt(dormerStart);
+    drone.box0(bodyBlockId, width, height, depth);
+    drone.up(height).right(width - 1).turn(numberOfTurns).prism(roofBlockId, depth, width);
+    drone.move(dormerStart).right(windowOffset).box( windowBlockId, windowWidth, windowHeight, windowDepth );
+    drone.move(dormerStart).fwd(depth - windowDepth).right(windowOffset).box( windowBlockId, windowWidth, windowHeight, windowDepth );
+};
+
+var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, doorType) {
+    var start = 'start';
+    var sectionHeight = 4;
+
+    var middleSection = Math.ceil(sectionsAcross/2);
+
+    var sectionWindowWidth = sectionWidth - 2;
+    var sectionWindowHeight = sectionHeight - 2;
+    var glassBlockId = 102; //http://www.minecraftinfo.com/glasspane.htm
+
+    drone.chkpt(start);
+
+    drone.box0(blockId, sectionsAcross * sectionWidth, sectionHeight, depth);
+
+    var i;
+    var drawDoor;
+    for (i = 1; i <= sectionsAcross; i++) {
+        drawDoor = (doorType !== null) && (i == middleSection);
+
+        if (drawDoor) {
+            var doorFunc = getValueForString(doorType, { 'single': 'door', 'double': 'door2' }, 'single');
+
+            //Front door and backdoor
+            drone.move(start).right((i - 1) * sectionWidth).right(1)[doorFunc]();
+            drone.move(start).right((i - 1) * sectionWidth).right(1).fwd(depth - 1)[doorFunc]();
+
+        } else {
+            drone.move(start)
+                .right((i - 1) * sectionWidth)
+                .up(1)
+                .right(1)
+                .box(glassBlockId, sectionWindowWidth, sectionWindowHeight, 1 );
+        }
+    }
+
+    return drone.move(start)
+        .up(sectionHeight);
+};
+
 
 
 //type 'sandstone', 'brick' or 'stone'
@@ -146,52 +183,7 @@ exports.houseOld = function(type, numberOfFloors, sectionsAcross, sectionWidth) 
 };
 
 
-var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDoor) {
-    var start = 'start';
-    var sectionHeight = 4;
 
-    var middleSection = Math.ceil(sectionsAcross/2);
-
-    var sectionWindowWidth = sectionWidth - 2;
-    var sectionWindowHeight = sectionHeight - 2;
-    var glassBlockId = 102; //http://www.minecraftinfo.com/glasspane.htm
-
-    drone.chkpt(start);
-
-    drone.box0(blockId, sectionsAcross * sectionWidth, sectionHeight, depth);
-
-    var i;
-    var drawDoor;
-    for (i = 1; i <= sectionsAcross; i++) {
-        drawDoor = hasDoor && (i == middleSection);
-
-        if (drawDoor) {
-            //Front door
-            drone.move(start)
-                 .right((i - 1) * sectionWidth)
-                 .up(1)
-                 .right(1)
-                 .door();
-
-            //Backdoor
-            drone.move(start)
-                .right((i - 1) * sectionWidth)
-                .up(1)
-                .right(1)
-                .fwd(depth - 1)
-                .door();
-        } else {
-            drone.move(start)
-                 .right((i - 1) * sectionWidth)
-                 .up(1)
-                 .right(1)
-                 .box( blocks.glass_pane, sectionWindowWidth, sectionWindowHeight, 1 );
-        }
-    }
-
-    return drone.move(start)
-                .up(sectionHeight);
-};
 
 
 //length: height > 0
