@@ -76,8 +76,17 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers, chim
 
     var roofStart = 'roofStart';
     drone.chkpt(roofStart);
-    drone.right(2);
-    dormer(drone, blockId, roofBlockId, windowSectionWidth, dormerHeight, depth);
+    var dormerOffset = ((2 * windowSectionWidth) - windowSectionWidth)/2;
+
+    var doubleSections = Math.floor(widthInWindows / 2);
+    var doubleSectionStart;
+    for (i = 1; i <= doubleSections; i++) {
+        drone.move(roofStart);
+        doubleSectionStart = (i - 1) * (windowSectionWidth * 2);
+        drone.right(doubleSectionStart);
+        drone.right(dormerOffset);
+        dormer(drone, blockId, roofBlockId, windowSectionWidth, dormerHeight, depth);
+    }
 
     //Chimneys
     //http://www.minecraftinfo.com/stonebricks.htm
