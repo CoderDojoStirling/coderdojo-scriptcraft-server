@@ -46,8 +46,9 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers) {
         }
     });
     var doorType = 'single';
+    var isGable = false;
     var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
-    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
+    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers);
 };
 
 exports.housewithshop = function(widthInWindows, heightInFloors, material, dormers) {
@@ -74,11 +75,40 @@ exports.housewithshop = function(widthInWindows, heightInFloors, material, dorme
         }
     });
     var doorType = 'double';
+    var isGable = false;
     var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
-    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
+    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers);
 };
 
-var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, hasDormers) {
+exports.gablehouse = function(widthInWindows, heightInFloors, material, dormers) {
+    widthInWindows = capNumber(getNumber(widthInWindows, null), 9);
+    heightInFloors = capNumber(getNumber(heightInFloors, null), 5);
+    if ((widthInWindows === null) || (heightInFloors === null)) {
+        echo(self, 'Please give the width and height of house (in windows), as numbers');
+        return;
+    }
+
+    var blockIds = getValueForString(material, {
+        'stone': {
+            ground: 1,
+            upper: 1
+        },
+        'sandstone': {
+            ground: 24,
+            upper: 24
+        },
+        'brick': {
+            ground: 98,
+            upper: 98
+        }
+    });
+    var doorType = 'single';
+    var isGable = true;
+    var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
+    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers);
+};
+
+var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers) {
     var windowSectionWidth = 4;
     var depth = 10;
     //http://www.minecraftinfo.com/cobblestonestairs.htm
@@ -150,7 +180,8 @@ var dormer = function(drone, bodyBlockId, roofBlockId, width, height, depth) {
 };
 
 var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, doorType) {
-    var start = 'start';
+    var frontStart = 'frontStart';
+    var backStart = 'backStart';
     var sectionHeight = 4;
 
     var middleSection = Math.ceil(sectionsAcross/2);
@@ -159,33 +190,36 @@ var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, doorT
     var sectionWindowHeight = sectionHeight - 2;
     var glassBlockId = 102; //http://www.minecraftinfo.com/glasspane.htm
 
-    drone.chkpt(start);
 
     drone.box0(blockId, sectionsAcross * sectionWidth, sectionHeight, depth);
 
-    var i;
-    var drawDoor;
-    for (i = 1; i <= sectionsAcross; i++) {
-        drawDoor = (doorType !== null) && (i == middleSection);
+    drone.chkpt(frontStart);
+    drone.fwd(depth - 1).right((sectionsAcross * sectionWidth) - 1).turn(2);
+    drone.chkpt(backStart);
+    var checkpoints = [frontStart, backStart];
 
-        if (drawDoor) {
-            var doorFunc = getValueForString(doorType, { 'single': 'door', 'double': 'door2' }, 'single');
+    var i, j, start, drawDoor;
+    for (i = 0; i < checkpoints.length; i++) {
+        start = checkpoints[i];
+        drone.move(start);
 
-            //Front door and backdoor
-            drone.move(start).right((i - 1) * sectionWidth).right(1)[doorFunc]();
-            drone.move(start).right((i - 1) * sectionWidth).right(1).fwd(depth - 1)[doorFunc]();
+        for (j = 1; j <= sectionsAcross; j++) {
+            drawDoor = (doorType !== null) && (j == middleSection);
 
-        } else {
-            drone.move(start)
-                .right((i - 1) * sectionWidth)
-                .up(1)
-                .right(1)
-                .box(glassBlockId, sectionWindowWidth, sectionWindowHeight, 1 );
+            if (drawDoor) {
+                var doorFunc = getValueForString(doorType, { 'single': 'door', 'double': 'door2' }, 'single');
+                drone.move(start).right((j - 1) * sectionWidth).right(1)[doorFunc]();
+            } else {
+                drone.move(start)
+                    .right((j - 1) * sectionWidth)
+                    .up(1)
+                    .right(1)
+                    .box(glassBlockId, sectionWindowWidth, sectionWindowHeight, 1 );
+            }
         }
     }
 
-    return drone.move(start)
-        .up(sectionHeight);
+    return drone.move(frontStart).up(sectionHeight);
 };
 
 //length: height > 0
