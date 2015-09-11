@@ -58,17 +58,18 @@ exports.housewithshop = function(widthInWindows, heightInFloors, material, dorme
         return;
     }
 
+    var shopColors = [ '159:1', '159:2', '159:3','159:4','159:5','159:6', '159:10', '159:12'];
     var blockIds = getValueForString(material, {
         'stone': {
-            ground: '159:5',
+            ground: randomValueFromArray(shopColors),
             upper: 1
         },
         'sandstone': {
-            ground: '159:10',
+            ground: randomValueFromArray(shopColors),
             upper: 24
         },
         'brick': {
-            ground: '159:12',
+            ground: randomValueFromArray(shopColors),
             upper: 98
         }
     });
@@ -388,6 +389,10 @@ var splitStringIntoLines = function(value, maxLineLength) {
 var randomKeyFromObject = function(obj) {
     var keys = Object.keys(obj);
     return keys[randomIntFromInterval(0, keys.length - 1)];
+};
+
+var randomValueFromArray = function(arr) {
+    return arr[randomIntFromInterval(0, arr.length - 1)];
 };
 
 var randomIntFromInterval = function (min,max) {
