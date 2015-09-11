@@ -23,13 +23,82 @@
  We need to specify block types when building (e.g. 'stone' house)
  */
 
+var dormer = function(drone, bodyBlockId, roofBlockId, width, height, depth) {
+    var numberOfTurns = 3;
+    var windowBlockId = 102;
+    var windowDepth = 1;
+
+    var windowOffset = 1;
+    var windowWidth = width - (2 * windowOffset);
+    var windowHeight = height;
+
+    var dormerStart = 'dormerStart';
+    drone.chkpt(dormerStart);
+    drone.box0(bodyBlockId, width, height, depth);
+    drone.up(height).right(width - 1).turn(numberOfTurns).prism(roofBlockId, depth, width);
+    drone.move(dormerStart).right(windowOffset).box( windowBlockId, windowWidth, windowHeight, windowDepth );
+    drone.move(dormerStart).fwd(depth - windowDepth).right(windowOffset).box( windowBlockId, windowWidth, windowHeight, windowDepth );
+}
+
+//var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDoor) {
+
+
+exports.house = function(widthInWindows, heightInFloors, material, dormers, chimneys) {
+    //TODO: Enforce values being supplied
+    //TODO: Cap possible values
+    //TODO: Randomise material if not supplied
+    widthInWindows = getNumber(widthInWindows, 3);
+    heightInFloors = getNumber(heightInFloors, 3);
+    var blockId = getValueForString(material, { 'brick': '45', 'sandstone': '24', 'stone': '98:2' }, 'stone');
+
+    var roofBlockId = 67;
+    var dormerHeight = 2;
+
+    //TODO: Nicer way of doing this?
+    var windowSectionWidth = 4;
+    var depth = 10;
+
+    //Start drone up one block, as assume cursor is pointing at ground tile
+    var drone = newDrone().up();
+
+    //Floors
+    var i;
+    for (i = 1; i <= heightInFloors; i++) {
+        //TODO: Sort shop logic
+        var hasDoor = i == 1;
+        drone = storey(drone, blockId, widthInWindows, windowSectionWidth, depth, hasDoor);
+    }
+
+    //Roof
+    //http://www.minecraftinfo.com/cobblestonestairs.htm
+    var roofWidth = widthInWindows * windowSectionWidth;
+    drone.prism0(roofBlockId, roofWidth, depth);
+
+    var roofStart = 'roofStart';
+    drone.chkpt(roofStart);
+    drone.right(2);
+    dormer(drone, blockId, roofBlockId, windowSectionWidth, dormerHeight, depth);
+
+    //Chimneys
+    //http://www.minecraftinfo.com/stonebricks.htm
+    var chimneyBlockId = 98;
+    var chimneyPos = depth * 0.4;
+    var chimneyHeight = depth * 0.6;
+    var chimneyWidth = 3;
+    var chimneyDepth = 1;
+    drone.move(roofStart).fwd(chimneyPos)
+        .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth)
+        .right(roofWidth - chimneyDepth)
+        .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth);
+};
+
 
 //type 'sandstone', 'brick' or 'stone'
 //numberOfFloors: number > 0
 //sectionsAcross: number > 0
 //sectionWidth: number >= 4
 //if type, numberOfFloors, sectionsAcross or sectionWidth are left undefined, will use default values
-exports.house = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
+exports.houseOld = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
     var blockId = getValueForString(type, { 'sandstone': '24:1', 'brick': 45, 'stone': '98:2' }, 'stone');
     numberOfFloors = getNumber(numberOfFloors, 7);
     sectionsAcross = getNumber(sectionsAcross, 2);
@@ -66,6 +135,7 @@ exports.house = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
          .right(roofWidth - chimneyDepth)
          .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth);
 };
+
 
 var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDoor) {
     var start = 'start';
@@ -114,37 +184,6 @@ var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, hasDo
                 .up(sectionHeight);
 };
 
-//type 'cobbles', 'dirt', or 'stone'
-//width: number > 0
-//length: number > 0
-//if blockType, width or length are left undefined, will use default values
-exports.road = function(type, width, length) {
-    //http://www.minecraftinfo.com/stone.htm
-    //http://www.minecraftinfo.com/cobblestone.htm
-    //http://www.minecraftinfo.com/dirt.htm
-    var blockId = getValueForString(type, { 'cobbles': 4, 'dirt': 3, 'stone': 1 }, 'cobbles');
-    width = getNumber(width, 9);
-    length = getNumber(length, 20);
-
-	var drone = newDrone();
-    drone.box(blockId, width, 1, length);
-};
-
-//type 'dirt', or 'stone'
-//width: number > 0
-//length: number > 0
-//if blockType, width or length are left undefined, will use default values
-exports.pavement = function(type, width, length) {
-    //http://www.minecraftinfo.com/stonebrickslab.htm
-    //http://www.minecraftinfo.com/dirt.htm
-
-    var blockId = getValueForString(type, { 'dirt': 3, 'stone': '44:5' }, 'stone');
-    width = getNumber(width, 3);
-    length = getNumber(length, 20);
-
-    var drone = newDrone();
-    drone.box(blockId, width, 2, length);
-};
 
 //length: height > 0
 //if height is left undefined, will use default value
@@ -203,6 +242,41 @@ exports.wallsign = function(message) {
     drone.wallsign(splitStringIntoLines(message, 15));
 };
 
+
+//Not for public consumption
+
+//type 'cobbles', 'dirt', or 'stone'
+//width: number > 0
+//length: number > 0
+//if blockType, width or length are left undefined, will use default values
+exports.road = function(type, width, length) {
+    //http://www.minecraftinfo.com/stone.htm
+    //http://www.minecraftinfo.com/cobblestone.htm
+    //http://www.minecraftinfo.com/dirt.htm
+    var blockId = getValueForString(type, { 'cobbles': 4, 'dirt': 3, 'stone': 1 }, 'cobbles');
+    width = getNumber(width, 9);
+    length = getNumber(length, 20);
+
+    var drone = newDrone();
+    drone.box(blockId, width, 1, length);
+};
+
+//type 'dirt', or 'stone'
+//width: number > 0
+//length: number > 0
+//if blockType, width or length are left undefined, will use default values
+exports.pavement = function(type, width, length) {
+    //http://www.minecraftinfo.com/stonebrickslab.htm
+    //http://www.minecraftinfo.com/dirt.htm
+
+    var blockId = getValueForString(type, { 'dirt': 3, 'stone': '44:5' }, 'stone');
+    width = getNumber(width, 3);
+    length = getNumber(length, 20);
+
+    var drone = newDrone();
+    drone.box(blockId, width, 2, length);
+};
+
 exports.air = function(width, height, depth) {
     var drone = newDrone().up();
     var airBlockId = 0; //http://www.minecraftinfo.com/air.htm
@@ -212,7 +286,7 @@ exports.air = function(width, height, depth) {
 
 exports.grass = function(width, height, depth) {
   var drone = newDrone().up();
-  var grassBlockId = 2
+  var grassBlockId = 2;
 
   drone.box(grassBlockId, width, height, depth);
 };
