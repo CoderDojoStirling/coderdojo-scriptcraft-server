@@ -84,7 +84,7 @@ exports.housewithshop = function(widthInWindows, heightInFloors, material, dorme
 };
 
 exports.gablehouse = function(widthInWindows, heightInFloors, material, dormers) {
-    widthInWindows = capNumber(getNumber(widthInWindows, null), 9);
+    widthInWindows = capNumber(getNumber(widthInWindows, null), 3);
     heightInFloors = capNumber(getNumber(heightInFloors, null), 5);
     if ((widthInWindows === null) || (heightInFloors === null)) {
         echo(self, 'Please give the width and height of house (in windows), as numbers');
@@ -111,6 +111,38 @@ exports.gablehouse = function(widthInWindows, heightInFloors, material, dormers)
     innerHouse(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers);
 };
 
+exports.gablehousewithshop = function(widthInWindows, heightInFloors, material, dormers) {
+    widthInWindows = capNumber(getNumber(widthInWindows, null), 9);
+    heightInFloors = capNumber(getNumber(heightInFloors, null), 5);
+    if ((widthInWindows === null) || (heightInFloors === null)) {
+        echo(self, 'Please give the width and height of house (in windows), as numbers');
+        return;
+    }
+
+    var shopColors = [ '159:1', '159:2', '159:3',
+        '159:4', '159:5', '159:6',
+        '159:7', '159:8', '159:9',
+        '159:10', '159:11', '159:12'];
+    var blockIds = getValueForString(material, {
+        'stone': {
+            ground: randomValueFromArray(shopColors),
+            upper: 1
+        },
+        'sandstone': {
+            ground: randomValueFromArray(shopColors),
+            upper: 24
+        },
+        'brick': {
+            ground: randomValueFromArray(shopColors),
+            upper: 98
+        }
+    });
+    var doorType = 'double';
+    var isGable = true;
+    var hasDormers = getValueForString(dormers, { 'dormers': true, 'nodormers': false }, 'nodormers');
+    innerHouse(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers);
+};
+
 var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, isGable, hasDormers) {
     var windowSectionWidth = 4;
     var depth = 10;
@@ -131,15 +163,36 @@ var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, is
     }
 
     var roofStart = 'roofStart';
-    drone.chkpt(roofStart);
 
     //Roof
     var roofWidth = widthInWindows * windowSectionWidth;
+    if (isGable) {
+        drone.right(roofWidth - 1).turn(3);
+        roofWidth = depth;
+        depth = widthInWindows * windowSectionWidth;
+    } else {
+        roofWidth = widthInWindows * windowSectionWidth;
+    }
+
+    drone.chkpt(roofStart);
     drone.prism0(roofBlockId, roofWidth, depth);
 
+    //Chimneys
+    //http://www.minecraftinfo.com/stonebricks.htm
+    var chimneyBlockId = 98;
+    var chimneyPos = depth * 0.3;
+    var chimneyHeight = depth * 0.6;
+    var chimneyWidth = Math.ceil((depth / 2) - 1);
+    var chimneyDepth = 1;
+    drone.move(roofStart).fwd(chimneyPos)
+        .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth)
+        .right(roofWidth - chimneyDepth)
+        .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth);
+
     //Dormers
+    //TODO: Not confused this works properly for gable-end buildings, but seems to! (with current constants)
     if (hasDormers) {
-        var dormerOffset = ((2 * windowSectionWidth) - windowSectionWidth)/2;
+        var dormerOffset = ((2 * windowSectionWidth) - windowSectionWidth) / 2;
 
         var doubleSections = Math.floor(widthInWindows / 2);
         var doubleSectionStart;
@@ -151,18 +204,6 @@ var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, is
             dormer(drone, blockId, roofBlockId, windowSectionWidth, dormerHeight, depth);
         }
     }
-
-    //Chimneys
-    //http://www.minecraftinfo.com/stonebricks.htm
-    var chimneyBlockId = 98;
-    var chimneyPos = depth * 0.4;
-    var chimneyHeight = depth * 0.6;
-    var chimneyWidth = 3;
-    var chimneyDepth = 1;
-    drone.move(roofStart).fwd(chimneyPos)
-        .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth)
-        .right(roofWidth - chimneyDepth)
-        .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth);
 };
 
 var dormer = function(drone, bodyBlockId, roofBlockId, width, height, depth) {
