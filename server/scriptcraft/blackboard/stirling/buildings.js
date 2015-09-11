@@ -112,7 +112,7 @@ exports.gablehouse = function(widthInWindows, heightInFloors, material, dormers)
 };
 
 exports.gablehousewithshop = function(widthInWindows, heightInFloors, material, dormers) {
-    widthInWindows = capNumber(getNumber(widthInWindows, null), 9);
+    widthInWindows = capNumber(getNumber(widthInWindows, null), 3);
     heightInFloors = capNumber(getNumber(heightInFloors, null), 5);
     if ((widthInWindows === null) || (heightInFloors === null)) {
         echo(self, 'Please give the width and height of house (in windows), as numbers');
