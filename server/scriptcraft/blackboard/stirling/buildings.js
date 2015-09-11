@@ -24,8 +24,13 @@
  */
 
 exports.house = function(widthInWindows, heightInFloors, material, dormers) {
-    widthInWindows = getNumber(widthInWindows, 3);
-    heightInFloors = getNumber(heightInFloors, 3);
+    widthInWindows = getNumber(widthInWindows, null);
+    heightInFloors = getNumber(heightInFloors, null);
+    if ((widthInWindows === null) || (heightInFloors === null)) {
+        echo(self, 'Please give the width and height of house, as numbers');
+        return;
+    }
+
     var blockIds = getValueForString(material, {
         'stone': {
             ground: 1,
@@ -45,9 +50,14 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers) {
     innerHouse(widthInWindows, heightInFloors, blockIds, doorType, hasDormers);
 };
 
-exports.houseWithShop = function(widthInWindows, heightInFloors, material, dormers) {
-    widthInWindows = getNumber(widthInWindows, 3);
-    heightInFloors = getNumber(heightInFloors, 3);
+exports.housewithshop = function(widthInWindows, heightInFloors, material, dormers) {
+    widthInWindows = getNumber(widthInWindows, null);
+    heightInFloors = getNumber(heightInFloors, null);
+    if ((widthInWindows === null) || (heightInFloors === null)) {
+        echo(self, 'Please give the width and height of house, as numbers');
+        return;
+    }
+
     var blockIds = getValueForString(material, {
         'stone': {
             ground: '159:5',
@@ -68,12 +78,11 @@ exports.houseWithShop = function(widthInWindows, heightInFloors, material, dorme
 };
 
 var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, hasDormers) {
-    var roofBlockId = 67;
-    var dormerHeight = 2;
-
-    //TODO: Nicer way of doing this?
     var windowSectionWidth = 4;
     var depth = 10;
+    //http://www.minecraftinfo.com/cobblestonestairs.htm
+    var roofBlockId = 67;
+    var dormerHeight = 2;
 
     //Start drone up one block, as assume cursor is pointing at ground tile
     var drone = newDrone().up();
@@ -87,13 +96,12 @@ var innerHouse = function(widthInWindows, heightInFloors, blockIds, doorType, ha
         drone = storey(drone, blockId, widthInWindows, windowSectionWidth, depth, doorType);
     }
 
-    //Roof
-    //http://www.minecraftinfo.com/cobblestonestairs.htm
-    var roofWidth = widthInWindows * windowSectionWidth;
-    drone.prism0(roofBlockId, roofWidth, depth);
-
     var roofStart = 'roofStart';
     drone.chkpt(roofStart);
+
+    //Roof
+    var roofWidth = widthInWindows * windowSectionWidth;
+    drone.prism0(roofBlockId, roofWidth, depth);
 
     //Dormers
     if (hasDormers) {
@@ -179,62 +187,17 @@ var storey = function(drone, blockId, sectionsAcross, sectionWidth, depth, doorT
         .up(sectionHeight);
 };
 
-
-
-//type 'sandstone', 'brick' or 'stone'
-//numberOfFloors: number > 0
-//sectionsAcross: number > 0
-//sectionWidth: number >= 4
-//if type, numberOfFloors, sectionsAcross or sectionWidth are left undefined, will use default values
-exports.houseOld = function(type, numberOfFloors, sectionsAcross, sectionWidth) {
-    var blockId = getValueForString(type, { 'sandstone': '24:1', 'brick': 45, 'stone': '98:2' }, 'stone');
-    numberOfFloors = getNumber(numberOfFloors, 7);
-    sectionsAcross = getNumber(sectionsAcross, 2);
-    sectionWidth = getNumber(sectionWidth, 4);
-    sectionWidth = sectionWidth < 4 ? 4 : sectionWidth; //Ensure sectionWidth is minimum of 4
-
-    var depth = 10;
-
-    //Start drone up one block, as assume cursor is pointing at ground tile
-    var drone = newDrone().up();
-
-    //Floors
-    var i;
-    for (i = 1; i <= numberOfFloors; i++) {
-        var hasDoor = i == 1;
-        drone = storey(drone, blockId, sectionsAcross, sectionWidth, depth, hasDoor);
-    }
-
-    //Roof
-    http://www.minecraftinfo.com/cobblestonestairs.htm
-    var roofBlockId = 67;
-    var roofWidth = sectionsAcross * sectionWidth;
-    drone.prism0(roofBlockId, roofWidth, depth);
-
-    //Chimneys
-    //http://www.minecraftinfo.com/stonebricks.htm
-    var chimneyBlockId = 98;
-    var chimneyPos = depth * 0.4;
-    var chimneyHeight = depth * 0.6;
-    var chimneyWidth = 3;
-    var chimneyDepth = 1;
-    drone.fwd(chimneyPos)
-         .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth)
-         .right(roofWidth - chimneyDepth)
-         .box(chimneyBlockId, chimneyDepth, chimneyHeight, chimneyWidth);
-};
-
-
-
-
-
 //length: height > 0
 //if height is left undefined, will use default value
-exports.light = function(height) {
+exports.lamppost = function(height) {
     var lamppostBlockId = 42; //http://www.minecraftinfo.com/blockofiron.htm
     var lightBlockId = 89; //http://www.minecraftinfo.com/beacon.htm
 
-    height = getNumber(height, 7);
+    height = getNumber(height, null);
+    if (height === null) {
+        echo(self, 'Please give the height of light, as number');
+        return;
+    }
 
     var drone = newDrone();
 
@@ -248,8 +211,12 @@ exports.light = function(height) {
 //length: number > 0
 //if width or length are left undefined, will use default values
 exports.garden = function(width, length) {
-    width = getNumber(width, 8);
-    length = getNumber(length, 10);
+    width = getNumber(width, null);
+    length = getNumber(length, null);
+    if ((width === null) || (length === null)) {
+        echo(self, 'Please give the width and length of garden, as numbers');
+        return;
+    }
 
     var drone = newDrone();
     drone.garden(width,length);
@@ -258,7 +225,12 @@ exports.garden = function(width, length) {
 //type: 'birch', 'oak', 'spruce'
 //if type is left undefined, will use default value
 exports.tree = function(type) {
-    type = getStringOf(type, ['birch', 'oak', 'spruce'], 'birch');
+    var treeTypes = ['birch', 'oak', 'spruce'];
+    type = getStringOf(type, treeTypes, null);
+    if (type === null) {
+        echo(self, 'Please give the type of tree: ' + treeTypes.map(function(value) { return '"' + value + '"'; }).join(', '));
+        return;
+    }
 
     var drone = newDrone();
     drone[type]();
@@ -267,10 +239,13 @@ exports.tree = function(type) {
 //mesage: string
 //if message is undefined, will use default value
 exports.sign = function(message) {
+    message = getString(message, null);
+    if (message === null) {
+        echo(self, 'Please give the message for the sign, like: ' + '"' + 'I am a message' + '"');
+        return;
+    }
+
     var drone = newDrone();
-
-    message = getString(message, 'I am a sign');
-
     //Move up, as assume cursor is pointing at ground tile. And sign should be on surface
     drone.up().signpost(splitStringIntoLines(message, 15));
 };
@@ -278,10 +253,13 @@ exports.sign = function(message) {
 //mesage: string
 //if message is undefined, will use default value
 exports.wallsign = function(message) {
+    message = getString(message, null);
+    if (message === null) {
+        echo(self, 'Please give the message for the wall-sign, like: ' + '"' + 'I am a message' + '"');
+        return;
+    }
+
     var drone = newDrone();
-
-    message = getString(message, 'I am a wall sign');
-
     drone.wallsign(splitStringIntoLines(message, 15));
 };
 
@@ -340,54 +318,48 @@ var newDrone = function() {
     return new Drone(self);
 }
 
-var getValueForString = function (input, valueForString, defaultValue) {
+var getValueForString = function (input, valueForString, fallbackValue) {
     var value = input;
 
     if ((value == undefined) ||
         (typeof value != 'string')) {
-        value = defaultValue;
+        value = fallbackValue;
     }
 
     return valueForString[value];
 }
 
-var getStringOf = function(input, acceptableValues, defaultValue) {
+var getStringOf = function(input, acceptableValues, fallbackValue) {
     var value = input;
 
     if ((value == undefined) ||
         (typeof value != 'string') ||
         (acceptableValues.indexOf(value) < 0)) {
 
-        value = defaultValue;
+        value = fallbackValue;
     }
 
     return value;
 };
 
-var getString = function(input, defaultValue) {
+var getString = function(input, fallbackValue) {
     var value = input;
 
     if ((value == undefined) ||
         (typeof value != 'string')) {
-        value = defaultValue;
+        value = fallbackValue;
     }
 
     return value;
 };
 
-var getNumber = function(input, defaultValue) {
-    var maxValue = 30;
-
+var getNumber = function(input, fallbackValue) {
     var value = input;
 
-    if ((value == undefined) ||
+    if ((value === undefined) ||
        (typeof value != 'number') ||
        (value <= 0)) {
-        value = defaultValue;
-    }
-
-    if (value > maxValue) {
-        value = maxValue;
+        value = fallbackValue;
     }
 
     return value;
