@@ -23,13 +23,50 @@
  We need to specify block types when building (e.g. 'stone' house)
  */
 
-exports.house = function(widthInWindows, heightInFloors, material, dormers, chimneys) {
+exports.house = function(widthInWindows, heightInFloors, material, dormers) {
+    var doorType = 'single';
+    var blockIds = getValueForString(material, {
+        'stone': {
+            ground: 45,
+            upper: 45
+        },
+        'sandstone': {
+            ground: 24,
+            upper: 24
+        },
+        'brick': {
+            ground: '98:2',
+            upper: '98:2'
+        }
+    }, 'stone');
+    configedHouse(widthInWindows, heightInFloors, material, dormers, doorType, blockIds);
+};
+
+exports.houseWithShop = function(widthInWindows, heightInFloors, material, dormers) {
+    var doorType = 'double';
+    var blockIds = getValueForString(material, {
+        'stone': {
+            ground: '159:5',
+            upper: 1
+        },
+        'sandstone': {
+            ground: '159:10',
+            upper: 24
+        },
+        'brick': {
+            ground: '159:12',
+            upper: 98
+        }
+    }, 'stone');
+    configedHouse(widthInWindows, heightInFloors, material, dormers, doorType, blockIds);
+};
+
+var configedHouse = function(widthInWindows, heightInFloors, material, dormers, doorType, blockIds) {
     //TODO: Enforce values being supplied
     //TODO: Cap possible values
     //TODO: Randomise material if not supplied
     widthInWindows = getNumber(widthInWindows, 3);
     heightInFloors = getNumber(heightInFloors, 3);
-    var blockId = getValueForString(material, { 'brick': '45', 'sandstone': '24', 'stone': '98:2' }, 'stone');
 
     var roofBlockId = 67;
     var dormerHeight = 2;
@@ -44,8 +81,9 @@ exports.house = function(widthInWindows, heightInFloors, material, dormers, chim
     //Floors
     var i;
     for (i = 1; i <= heightInFloors; i++) {
-        var hasDoor = i == 1;
-        var doorType = hasDoor ? 'double' : null;
+        var groundFloor = i == 1;
+        var doorType = groundFloor ? doorType : null;
+        var blockId = groundFloor ? blockIds.ground : blockIds.upper;
         drone = storey(drone, blockId, widthInWindows, windowSectionWidth, depth, doorType);
     }
 
