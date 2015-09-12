@@ -1,0 +1,84 @@
+---- Minecraft Crash Report ----
+// Would you like a cupcake?
+
+Time: 9/12/15 1:29 PM
+Description: Ticking entity
+
+java.util.ConcurrentModificationException
+	at java.util.HashMap$HashIterator.nextEntry(HashMap.java:922)
+	at java.util.HashMap$KeyIterator.next(HashMap.java:956)
+	at net.minecraft.entity.EntityTracker.a(EntityTracker.java:308)
+	at net.minecraft.entity.player.EntityPlayerMP.s_(EntityPlayerMP.java:347)
+	at net.minecraft.world.World.a(World.java:1329)
+	at net.minecraft.world.WorldServer.a(WorldServer.java:614)
+	at net.minecraft.world.World.g(World.java:1309)
+	at net.minecraft.world.World.i(World.java:1188)
+	at net.minecraft.world.WorldServer.i(WorldServer.java:481)
+	at net.minecraft.server.MinecraftServer.z(MinecraftServer.java:680)
+	at net.minecraft.server.dedicated.DedicatedServer.z(DedicatedServer.java:446)
+	at net.minecraft.server.MinecraftServer.y(MinecraftServer.java:589)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:491)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.HashMap$HashIterator.nextEntry(HashMap.java:922)
+	at java.util.HashMap$KeyIterator.next(HashMap.java:956)
+	at net.minecraft.entity.EntityTracker.a(EntityTracker.java:308)
+	at net.minecraft.entity.player.EntityPlayerMP.s_(EntityPlayerMP.java:347)
+	at net.minecraft.world.World.a(World.java:1329)
+	at net.minecraft.world.WorldServer.a(WorldServer.java:614)
+	at net.minecraft.world.World.g(World.java:1309)
+
+-- Entity being ticked --
+Details:
+	Entity Type: null (net.minecraft.entity.player.EntityPlayerMP)
+	Entity ID: 44563072
+	Entity Name: johnd_7
+	Entity's Exact location: 755.50, 5.00, -181.50
+	Entity's Block location: 755.00,5.00,-182.00 - World: (755,5,-182), Chunk: (at 3,0,10 in 47,-12; contains blocks 752,0,-192 to 767,255,-177), Region: (1,-1; contains chunks 32,-32 to 63,-1, blocks 512,0,-512 to 1023,255,-1)
+	Entity's Momentum: 0.00, 0.25, 0.00
+	Entity's Rider: ~~ERROR~~ NullPointerException: null
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.world.World.i(World.java:1188)
+	at net.minecraft.world.WorldServer.i(WorldServer.java:481)
+
+-- Affected level --
+Details:
+	Level name: Roshar
+	All players: 4 total; [EntityPlayerMP['greghuc'/160, l='Roshar', x=763.76, y=6.15, z=-191.31], EntityPlayerMP['CreativeStirling'/161, l='Roshar', x=401.94, y=4.00, z=-168.55], EntityPlayerMP['EnquiryStirling'/10026249, l='Roshar', x=763.50, y=4.00, z=-185.50], EntityPlayerMP['johnd_7'/44563072, l='Roshar', x=755.50, y=5.00, z=-181.50]]
+	Chunk stats: ServerChunkCache: 1024 Drop: 0
+	Level seed: -5138459056659394599
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 759.00,4.00,-189.00 - World: (759,4,-189), Chunk: (at 7,0,3 in 47,-12; contains blocks 752,0,-192 to 767,255,-177), Region: (1,-1; contains chunks 32,-32 to 63,-1, blocks 512,0,-512 to 1023,255,-1)
+	Level time: 676901 game time, 10534 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 1 (now: false), thunder time: 1 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.z(MinecraftServer.java:680)
+	at net.minecraft.server.dedicated.DedicatedServer.z(DedicatedServer.java:446)
+	at net.minecraft.server.MinecraftServer.y(MinecraftServer.java:589)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:491)
+	at java.lang.Thread.run(Thread.java:745)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8
+	Operating System: Linux (amd64) version 3.2.0-23-generic
+	Java Version: 1.7.0_79, Oracle Corporation
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 421623432 bytes (402 MB) / 687091712 bytes (655 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 1 total; -Xmx1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	Profiler Position: N/A (disabled)
+	Player Count: 6 / 20; [EntityPlayerMP['WookieCushion'/291734, l='Roshar', x=30.57, y=103.40, z=15.34], EntityPlayerMP['EccentricGreg'/343527, l='Roshar', x=68.99, y=59.00, z=-20.03], EntityPlayerMP['greghuc'/160, l='Roshar', x=763.76, y=6.15, z=-191.31], EntityPlayerMP['CreativeStirling'/161, l='Roshar', x=401.94, y=4.00, z=-168.55], EntityPlayerMP['EnquiryStirling'/10026249, l='Roshar', x=763.50, y=4.00, z=-185.50], EntityPlayerMP['johnd_7'/44563072, l='Roshar', x=755.50, y=5.00, z=-181.50]]
+	Is Modded: Definitely; Server brand changed to 'CanaryMod'
+	Type: Dedicated Server (map_server.txt)

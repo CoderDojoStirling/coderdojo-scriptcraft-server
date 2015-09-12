@@ -1,32 +1,112 @@
-[19:52:26] [CanaryMod] [INFO]: Starting: CanaryMod 1.8.0-1.2.1-SNAPSHOT
-[19:52:26] [CanaryMod] [INFO]: Canary Path: /vagrant/lib/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar & Working From: /vagrant/server
-[19:52:26] [CanaryMod] [INFO]: Registered xml Database
-[19:52:26] [CanaryMod] [INFO]: Found 1 plugins; total: 1
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting minecraft server version 1.8
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Loading properties
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Generating keypair
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting Minecraft server on *:25565
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: The server will make no attempt to authenticate usernames. Beware.
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[19:52:28] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[19:52:28] [CanaryMod] [INFO]: Enabling early Plugins...
-[19:52:29] [CanaryMod] [INFO]: Enabling late Plugins...
-[19:52:29] [CanaryMod] [INFO]: Enabling plugin ScriptCraft
-[19:52:30] [ScriptCraft] [WARN]: alias plugin is not yet supported in CanaryMod
-[19:52:31] [ScriptCraft] [INFO]: Blackboard turned on for all players on server 192.168.0.8
-[19:52:31] [ScriptCraft] [WARN]: commando-test not yet supported in CanaryMod
-[19:52:31] [ScriptCraft] [WARN]: commando plugin is not yet supported in CanaryMod
-[19:52:32] [ScriptCraft] [WARN]: cow-clicker minigame is not yet supported in CanaryMod and Craftbukkit
-[19:52:32] [net.minecraft.server.MinecraftServer] [INFO]: Preparing start region for level Roshar_NORMAL (0)
-[19:52:33] [net.minecraft.server.MinecraftServer] [INFO]: Preparing spawn area: 22%
-[19:52:33] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Done (4.954s)! For help, type "help" or "?"
-[19:52:33] [ScriptCraft] [INFO]: js-patch setTimeout() test complete
-[19:52:36] [CanaryMod] [INFO] [MESSAGE]: 2.0
-[19:53:04] [CanaryMod] [INFO] [NOTICE]: Console issued a manual shutdown
-[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Stopping server
-[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Saving players
-[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Saving worlds
-[19:53:04] [net.minecraft.server.MinecraftServer] [INFO]: Saving chunks for level 'Roshar'/Overworld
-[19:53:04] [CanaryMod] [INFO]: Disabling Plugins ...
-[19:53:04] [CanaryMod] [INFO]: Disabling plugin ScriptCraft
+[13:30:03] [CanaryMod] [INFO]: Starting: CanaryMod 1.8.0-1.2.1-SNAPSHOT
+[13:30:03] [CanaryMod] [INFO]: Canary Path: /vagrant/lib/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar & Working From: /vagrant/server
+[13:30:04] [CanaryMod] [INFO]: Registered xml Database
+[13:30:04] [CanaryMod] [INFO]: Found 1 plugins; total: 1
+[13:30:05] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting minecraft server version 1.8
+[13:30:05] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Loading properties
+[13:30:05] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Generating keypair
+[13:30:06] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Starting Minecraft server on *:25565
+[13:30:06] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[13:30:06] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: The server will make no attempt to authenticate usernames. Beware.
+[13:30:06] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[13:30:06] [net.minecraft.server.dedicated.DedicatedServer] [WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[13:30:06] [CanaryMod] [INFO]: Enabling early Plugins...
+[13:30:07] [CanaryMod] [INFO]: Enabling late Plugins...
+[13:30:07] [CanaryMod] [INFO]: Enabling plugin ScriptCraft
+[13:30:07] [ScriptCraft] [WARN]: alias plugin is not yet supported in CanaryMod
+[13:30:09] [ScriptCraft] [INFO]: Blackboard turned on for all players on server 192.168.0.106
+[13:30:09] [ScriptCraft] [WARN]: commando-test not yet supported in CanaryMod
+[13:30:09] [ScriptCraft] [WARN]: commando plugin is not yet supported in CanaryMod
+[13:30:09] [ScriptCraft] [WARN]: cow-clicker minigame is not yet supported in CanaryMod and Craftbukkit
+[13:30:09] [net.minecraft.server.MinecraftServer] [INFO]: Preparing start region for level Roshar_NORMAL (0)
+[13:30:10] [net.minecraft.server.MinecraftServer] [INFO]: Preparing spawn area: 26%
+[13:30:10] [net.minecraft.server.dedicated.DedicatedServer] [INFO]: Done (4.489s)! For help, type "help" or "?"
+[13:30:10] [ScriptCraft] [INFO]: js-patch setTimeout() test complete
+[13:30:18] [net.minecraft.server.management.ServerConfigurationManager] [INFO]: EnquiryStirling[/192.168.0.104:39057] logged in with entity id 195 at (763.5, 4.0, -185.5)
+[13:30:18] [ScriptCraft] [INFO]: Enabling scripting for player EnquiryStirling
+[13:30:18] [net.minecraft.server.MinecraftServer] [INFO]: EnquiryStirling joined the game
+[13:30:19] [net.minecraft.server.management.ServerConfigurationManager] [INFO]: CreativeStirling[/192.168.0.101:46420] logged in with entity id 2874 at (401.94162608188736, 4.0, -168.54804887987726)
+[13:30:19] [ScriptCraft] [INFO]: Enabling scripting for player CreativeStirling
+[13:30:19] [net.minecraft.server.MinecraftServer] [INFO]: CreativeStirling joined the game
+[13:30:23] [net.minecraft.server.management.ServerConfigurationManager] [INFO]: greghuc[/192.168.0.108:39219] logged in with entity id 35196 at (763.7631984918995, 6.154731793074618, -191.31397347662588)
+[13:30:24] [ScriptCraft] [INFO]: Enabling scripting for player greghuc
+[13:30:24] [net.minecraft.server.MinecraftServer] [INFO]: greghuc joined the game
+[13:30:33] [net.minecraft.server.management.ServerConfigurationManager] [INFO]: johnd_7[/192.168.0.105:44825] logged in with entity id 73849 at (755.5, 5.001335979112147, -181.5)
+[13:30:33] [ScriptCraft] [INFO]: Enabling scripting for player johnd_7
+[13:30:33] [net.minecraft.server.MinecraftServer] [INFO]: johnd_7 joined the game
+[13:30:35] [net.minecraft.server.MinecraftServer] [INFO]: Preparing start region for level Roshar_END (1)
+[13:30:36] [net.minecraft.server.MinecraftServer] [INFO]: Preparing spawn area: 52%
+[13:30:37] [net.minecraft.server.management.ServerConfigurationManager] [INFO]: EccentricGreg[/192.168.0.103:42818] logged in with entity id 80777 at (68.98528579429492, 59.0, -20.02950751043514)
+[13:30:37] [ScriptCraft] [INFO]: Enabling scripting for player EccentricGreg
+[13:30:37] [net.minecraft.server.MinecraftServer] [INFO]: EccentricGreg joined the game
+[13:30:58] [CanaryMod] [INFO]: Command used by greghuc: /js stirling.lamppost(4)
+[13:31:04] [net.minecraft.server.MinecraftServer] [INFO]: [Server: Set the time to 0]
+[13:31:04] [net.minecraft.server.MinecraftServer] [INFO]: Set the time to 0
+[13:31:16] [CanaryMod] [INFO]: <&7greghuc&f> sup
+[13:32:21] [CanaryMod] [INFO]: Command used by greghuc: /js stirling.garden(5,5)
+[13:32:31] [CanaryMod] [INFO]: <&7EnquiryStirling&f> js stirling wither
+[13:32:52] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:commm
+[13:33:00] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Command Block] * 1 to greghuc]
+[13:33:00] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Command Block] * 1 to EnquiryStirling]
+[13:33:00] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Command Block] * 1 to CreativeStirling]
+[13:33:00] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Command Block] * 1 to johnd_7]
+[13:33:00] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Command Block] * 1 to EccentricGreg]
+[13:33:00] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:command_block
+[13:33:05] [net.minecraft.server.MinecraftServer] [INFO]: Preparing start region for level Roshar_NETHER (-1)
+[13:33:06] [net.minecraft.server.MinecraftServer] [INFO]: Preparing spawn area: 44%
+[13:33:09] [net.minecraft.server.MinecraftServer] [WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 3524ms behind, skipping 70 tick(s)
+[13:33:13] [CanaryMod] [INFO]: Command used by CreativeStirling: /js stirling.garden(8,6)
+[13:33:20] [CanaryMod] [INFO]: <&7greghuc&f> do commands
+[13:35:21] [CanaryMod] [INFO]: Command used by greghuc: /js stirling.house(5,5)
+[13:35:42] [net.minecraft.server.MinecraftServer] [INFO]: johnd_7 fell out of the world
+[13:35:50] [CanaryMod] [INFO]: Command used by greghuc: /js stirling.house(1,10)
+[13:35:51] [net.minecraft.server.MinecraftServer] [INFO]: EccentricGreg fell out of the world
+[13:36:18] [CanaryMod] [INFO]: Command used by greghuc: /js stirling.house(1,10)
+[13:37:11] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Object successfully summoned]
+[13:37:11] [CanaryMod] [INFO]: Command used by greghuc: /summon Zombie
+[13:37:31] [CanaryMod] [INFO]: <&7EccentricGreg&f> hi
+[13:37:34] [CanaryMod] [INFO]: Command used by greghuc: /help
+[13:38:06] [net.minecraft.server.MinecraftServer] [INFO]: [EccentricGreg: Given [Spawn] * 1 to EccentricGreg]
+[13:38:06] [CanaryMod] [INFO]: Command used by EccentricGreg: /give EccentricGreg minecraft:spawn_egg
+[13:38:25] [net.minecraft.server.management.ServerConfigurationManager] [INFO]: WookieCushion[/192.168.0.107:53794] logged in with entity id 6208488 at (30.569385036294864, 103.40354978555459, 15.344473350177884)
+[13:38:25] [ScriptCraft] [INFO]: Enabling scripting for player WookieCushion
+[13:38:25] [net.minecraft.server.MinecraftServer] [INFO]: WookieCushion joined the game
+[13:39:09] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:diamond_pickaxe {Display:{Name:"noob"}}
+[13:39:13] [net.minecraft.server.MinecraftServer] [INFO]: [EccentricGreg: Given [Command Block] * 64 to EccentricGreg]
+[13:39:13] [CanaryMod] [INFO]: Command used by EccentricGreg: /give EccentricGreg minecraft:command_block 64
+[13:39:21] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to greghuc]
+[13:39:21] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EnquiryStirling]
+[13:39:21] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EccentricGreg]
+[13:39:21] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to CreativeStirling]
+[13:39:21] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to johnd_7]
+[13:39:21] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to WookieCushion]
+[13:39:21] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:diamond_pickaxe 1 0 {Display:{Name:"noob"}}
+[13:39:31] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to greghuc]
+[13:39:31] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EnquiryStirling]
+[13:39:31] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EccentricGreg]
+[13:39:31] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to CreativeStirling]
+[13:39:31] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to johnd_7]
+[13:39:31] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to WookieCushion]
+[13:39:31] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:diamond_pickaxe 1 0 {Display:{Name:"noob"}}
+[13:39:31] [CanaryMod] [INFO]: Command used by WookieCushion: /js stirling.house(3,4)
+[13:39:34] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to greghuc]
+[13:39:34] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EnquiryStirling]
+[13:39:34] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EccentricGreg]
+[13:39:34] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to CreativeStirling]
+[13:39:34] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to johnd_7]
+[13:39:34] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to WookieCushion]
+[13:39:34] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:diamond_pickaxe 1 0 {Display:{Name:"noob"}}
+[13:39:37] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to greghuc]
+[13:39:37] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EnquiryStirling]
+[13:39:37] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EccentricGreg]
+[13:39:37] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to CreativeStirling]
+[13:39:37] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to johnd_7]
+[13:39:37] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to WookieCushion]
+[13:39:37] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:diamond_pickaxe 1 0 {Display:{Name:"noob"}}
+[13:39:40] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to greghuc]
+[13:39:40] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EccentricGreg]
+[13:39:40] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to EnquiryStirling]
+[13:39:40] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to CreativeStirling]
+[13:39:40] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to johnd_7]
+[13:39:40] [net.minecraft.server.MinecraftServer] [INFO]: [greghuc: Given [Diamond Pickaxe] * 1 to WookieCushion]
+[13:39:40] [CanaryMod] [INFO]: Command used by greghuc: /give @a minecraft:diamond_pickaxe 1 0 {Display:{Name:"noob"}}
